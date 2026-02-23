@@ -76,8 +76,8 @@ export function DeceptionPage() {
         <div className="space-y-6">
             {/* Header */}
             <div>
-                <h2 className="text-2xl font-bold text-gray-100">Deception Environment</h2>
-                <p className="text-gray-400 mt-1">
+                <h2 className="text-2xl font-bold text-slate-100">Deception Environment</h2>
+                <p className="text-slate-400 mt-1">
                     RL-based deception agent with adaptive honeypot orchestration
                 </p>
             </div>
@@ -95,11 +95,11 @@ export function DeceptionPage() {
                                 disabled={loading}
                                 className={`p-4 rounded-lg border transition-all ${isSelected
                                     ? 'border-cyan-500 bg-cyan-500/20'
-                                    : 'border-gray-600 bg-gray-700/50 hover:border-gray-500'
+                                    : 'border-slate-600 bg-slate-700/50 hover:border-gray-500'
                                     }`}
                             >
-                                <Icon className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
-                                <h4 className="text-sm font-medium text-gray-200">{scenario.name}</h4>
+                                <Icon className="w-6 h-6 text-blue-400 mx-auto mb-2" />
+                                <h4 className="text-sm font-medium text-slate-200">{scenario.name}</h4>
                                 <SeverityBadge severity={scenario.severity} className="mt-2 text-xs" />
                             </button>
                         );
@@ -125,24 +125,24 @@ export function DeceptionPage() {
                                 <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full ${getActionColor(result.action_name)} mb-4`}>
                                     <Shield className="w-10 h-10 text-white" />
                                 </div>
-                                <span className="inline-block px-4 py-2 text-lg font-medium rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/50">
+                                <span className="inline-block px-4 py-2 text-lg font-medium rounded-full bg-cyan-500/20 text-blue-400 border border-cyan-500/50">
                                     {result.action_name.replace(/_/g, ' ').toUpperCase()}
                                 </span>
                             </div>
 
                             <div className="space-y-4">
                                 <div className="grid grid-cols-3 gap-3">
-                                    <div className="p-3 bg-gray-700/50 rounded-lg text-center">
-                                        <span className="text-gray-400 text-sm block">Action ID</span>
-                                        <span className="text-xl font-bold text-gray-200">{result.action_id}</span>
+                                    <div className="p-3 bg-slate-700/50 rounded-lg text-center">
+                                        <span className="text-slate-400 text-sm block">Action ID</span>
+                                        <span className="text-xl font-bold text-slate-200">{result.action_id}</span>
                                     </div>
-                                    <div className="p-3 bg-gray-700/50 rounded-lg text-center">
-                                        <span className="text-gray-400 text-sm block">Model</span>
+                                    <div className="p-3 bg-slate-700/50 rounded-lg text-center">
+                                        <span className="text-slate-400 text-sm block">Model</span>
                                         <span className="text-xl font-bold text-purple-400">{result.model_type.toUpperCase()}</span>
                                     </div>
-                                    <div className="p-3 bg-gray-700/50 rounded-lg text-center">
-                                        <span className="text-gray-400 text-sm block">Latency</span>
-                                        <span className="text-xl font-bold text-gray-200">
+                                    <div className="p-3 bg-slate-700/50 rounded-lg text-center">
+                                        <span className="text-slate-400 text-sm block">Latency</span>
+                                        <span className="text-xl font-bold text-slate-200">
                                             {result.latency_ms.toFixed(1)}ms
                                         </span>
                                     </div>
@@ -150,7 +150,7 @@ export function DeceptionPage() {
 
                                 {result.action_name.includes('hp') && (
                                     <div className="p-3 bg-purple-500/20 border border-purple-500/50 rounded-lg">
-                                        <span className="text-gray-400 text-sm block mb-1">Honeypot Target</span>
+                                        <span className="text-slate-400 text-sm block mb-1">Honeypot Target</span>
                                         <span className="text-lg font-bold text-purple-400">
                                             {result.action_name.replace('activate_', '').replace('redirect_to_', '')}
                                         </span>
@@ -159,7 +159,7 @@ export function DeceptionPage() {
                             </div>
                         </div>
                     ) : (
-                        <div className="flex items-center justify-center h-64 text-gray-500">
+                        <div className="flex items-center justify-center h-64 text-slate-500">
                             Select a threat scenario to get the agent's decision
                         </div>
                     )}
@@ -171,7 +171,7 @@ export function DeceptionPage() {
                         {HONEYPOTS.map((honeypot) => (
                             <div
                                 key={honeypot.name}
-                                className="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg"
+                                className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg"
                             >
                                 <div className="flex items-center gap-3">
                                     <div
@@ -179,13 +179,13 @@ export function DeceptionPage() {
                                             }`}
                                     />
                                     <div>
-                                        <h4 className="font-medium text-gray-200">{honeypot.name}</h4>
-                                        <span className="text-xs text-gray-500">{honeypot.type}</span>
+                                        <h4 className="font-medium text-slate-200">{honeypot.name}</h4>
+                                        <span className="text-xs text-slate-500">{honeypot.type}</span>
                                     </div>
                                 </div>
                                 <div className="text-right">
-                                    <span className="text-lg font-bold text-cyan-400">{honeypot.interactions}</span>
-                                    <span className="text-xs text-gray-500 block">interactions</span>
+                                    <span className="text-lg font-bold text-blue-400">{honeypot.interactions}</span>
+                                    <span className="text-xs text-slate-500 block">interactions</span>
                                 </div>
                             </div>
                         ))}
@@ -193,10 +193,10 @@ export function DeceptionPage() {
 
                     <div className="mt-4 p-4 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
                         <div className="flex items-center gap-2 mb-2">
-                            <Play className="w-4 h-4 text-cyan-400" />
-                            <span className="font-medium text-cyan-400">RL Policy</span>
+                            <Play className="w-4 h-4 text-blue-400" />
+                            <span className="font-medium text-blue-400">RL Policy</span>
                         </div>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-slate-400">
                             DQN-based agent trained with 50k episodes. Epsilon-greedy exploration with
                             adaptive decay. Reward shaping based on attacker engagement time.
                         </p>
@@ -207,40 +207,40 @@ export function DeceptionPage() {
             {/* Action Legend */}
             <Card title="Action Definitions">
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                    <div className="p-3 bg-gray-700/50 rounded-lg">
+                    <div className="p-3 bg-slate-700/50 rounded-lg">
                         <div className="flex items-center gap-2 mb-2">
                             <div className="w-3 h-3 rounded-full bg-red-500" />
-                            <span className="font-medium text-gray-200">BLOCK</span>
+                            <span className="font-medium text-slate-200">BLOCK</span>
                         </div>
-                        <p className="text-xs text-gray-400">Immediately drop connection</p>
+                        <p className="text-xs text-slate-400">Immediately drop connection</p>
                     </div>
-                    <div className="p-3 bg-gray-700/50 rounded-lg">
+                    <div className="p-3 bg-slate-700/50 rounded-lg">
                         <div className="flex items-center gap-2 mb-2">
                             <div className="w-3 h-3 rounded-full bg-purple-500" />
-                            <span className="font-medium text-gray-200">REDIRECT</span>
+                            <span className="font-medium text-slate-200">REDIRECT</span>
                         </div>
-                        <p className="text-xs text-gray-400">Send to honeypot for analysis</p>
+                        <p className="text-xs text-slate-400">Send to honeypot for analysis</p>
                     </div>
-                    <div className="p-3 bg-gray-700/50 rounded-lg">
+                    <div className="p-3 bg-slate-700/50 rounded-lg">
                         <div className="flex items-center gap-2 mb-2">
                             <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                            <span className="font-medium text-gray-200">SLOW_DOWN</span>
+                            <span className="font-medium text-slate-200">SLOW_DOWN</span>
                         </div>
-                        <p className="text-xs text-gray-400">Rate limit connection</p>
+                        <p className="text-xs text-slate-400">Rate limit connection</p>
                     </div>
-                    <div className="p-3 bg-gray-700/50 rounded-lg">
+                    <div className="p-3 bg-slate-700/50 rounded-lg">
                         <div className="flex items-center gap-2 mb-2">
                             <div className="w-3 h-3 rounded-full bg-blue-500" />
-                            <span className="font-medium text-gray-200">MONITOR</span>
+                            <span className="font-medium text-slate-200">MONITOR</span>
                         </div>
-                        <p className="text-xs text-gray-400">Allow with enhanced logging</p>
+                        <p className="text-xs text-slate-400">Allow with enhanced logging</p>
                     </div>
-                    <div className="p-3 bg-gray-700/50 rounded-lg">
+                    <div className="p-3 bg-slate-700/50 rounded-lg">
                         <div className="flex items-center gap-2 mb-2">
                             <div className="w-3 h-3 rounded-full bg-green-500" />
-                            <span className="font-medium text-gray-200">ALLOW</span>
+                            <span className="font-medium text-slate-200">ALLOW</span>
                         </div>
-                        <p className="text-xs text-gray-400">Permit normal traffic</p>
+                        <p className="text-xs text-slate-400">Permit normal traffic</p>
                     </div>
                 </div>
             </Card>

@@ -90,15 +90,15 @@ export function SystemMetricsPage() {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-gray-100">System Metrics</h2>
-                    <p className="text-gray-400 mt-1">
+                    <h2 className="text-2xl font-bold text-slate-100">System Metrics</h2>
+                    <p className="text-slate-400 mt-1">
                         Agent health monitoring and drift detection
                     </p>
                 </div>
                 <button
                     onClick={fetchStatus}
                     disabled={loading}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-700 rounded-lg text-gray-300 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-700 rounded-lg text-slate-300 transition-colors"
                 >
                     <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
                     Refresh
@@ -118,7 +118,7 @@ export function SystemMetricsPage() {
                                 )}
                             </div>
                             <div>
-                                <span className="text-sm text-gray-400">System Health</span>
+                                <span className="text-sm text-slate-400">System Health</span>
                                 <p className={`text-lg font-bold ${status.healthy ? 'text-green-400' : 'text-red-400'}`}>
                                     {status.healthy ? 'Healthy' : 'Degraded'}
                                 </p>
@@ -129,11 +129,11 @@ export function SystemMetricsPage() {
                     <Card>
                         <div className="flex items-center gap-3">
                             <div className="p-2 rounded-lg bg-cyan-500/20">
-                                <Clock className="w-6 h-6 text-cyan-400" />
+                                <Clock className="w-6 h-6 text-blue-400" />
                             </div>
                             <div>
-                                <span className="text-sm text-gray-400">Uptime</span>
-                                <p className="text-lg font-bold text-cyan-400">
+                                <span className="text-sm text-slate-400">Uptime</span>
+                                <p className="text-lg font-bold text-blue-400">
                                     {formatUptime(status.uptime_seconds)}
                                 </p>
                             </div>
@@ -146,7 +146,7 @@ export function SystemMetricsPage() {
                                 <Cpu className="w-6 h-6 text-purple-400" />
                             </div>
                             <div>
-                                <span className="text-sm text-gray-400">Active Agents</span>
+                                <span className="text-sm text-slate-400">Active Agents</span>
                                 <p className="text-lg font-bold text-purple-400">
                                     {Object.values(status.agents).filter((a: AgentMetrics) => a.loaded).length} / {Object.keys(status.agents).length}
                                 </p>
@@ -160,7 +160,7 @@ export function SystemMetricsPage() {
                                 <Activity className="w-6 h-6 text-orange-400" />
                             </div>
                             <div>
-                                <span className="text-sm text-gray-400">Events Processed</span>
+                                <span className="text-sm text-slate-400">Events Processed</span>
                                 <p className="text-lg font-bold text-orange-400">
                                     {status.events_processed.toLocaleString()}
                                 </p>
@@ -179,14 +179,14 @@ export function SystemMetricsPage() {
                             return (
                                 <div
                                     key={key}
-                                    className="p-4 bg-gray-700/50 rounded-lg border border-gray-600"
+                                    className="p-4 bg-slate-700/50 rounded-lg border border-slate-600"
                                 >
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-3">
                                             <div className={`w-3 h-3 rounded-full ${getHealthColor(agent.healthy)}`} />
                                             <div>
-                                                <h4 className="font-medium text-gray-200">{info.name}</h4>
-                                                <p className="text-sm text-gray-500">{info.description}</p>
+                                                <h4 className="font-medium text-slate-200">{info.name}</h4>
+                                                <p className="text-sm text-slate-500">{info.description}</p>
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-4">
@@ -195,7 +195,7 @@ export function SystemMetricsPage() {
                                                     Loaded
                                                 </span>
                                             ) : (
-                                                <span className="px-2 py-1 bg-gray-500/20 text-gray-400 text-xs rounded">
+                                                <span className="px-2 py-1 bg-gray-500/20 text-slate-400 text-xs rounded">
                                                     Not Loaded
                                                 </span>
                                             )}
@@ -204,26 +204,26 @@ export function SystemMetricsPage() {
 
                                     {agent.loaded && (
                                         <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-3">
-                                            <div className="text-center p-2 bg-gray-800/50 rounded">
-                                                <span className="text-xs text-gray-500 block">Avg Latency</span>
-                                                <span className="text-sm font-medium text-gray-300">
+                                            <div className="text-center p-2 bg-slate-800/50 rounded">
+                                                <span className="text-xs text-slate-500 block">Avg Latency</span>
+                                                <span className="text-sm font-medium text-slate-300">
                                                     {agent.avg_latency_ms.toFixed(1)}ms
                                                 </span>
                                             </div>
-                                            <div className="text-center p-2 bg-gray-800/50 rounded">
-                                                <span className="text-xs text-gray-500 block">Requests</span>
-                                                <span className="text-sm font-medium text-gray-300">
+                                            <div className="text-center p-2 bg-slate-800/50 rounded">
+                                                <span className="text-xs text-slate-500 block">Requests</span>
+                                                <span className="text-sm font-medium text-slate-300">
                                                     {agent.requests_count.toLocaleString()}
                                                 </span>
                                             </div>
-                                            <div className="text-center p-2 bg-gray-800/50 rounded">
-                                                <span className="text-xs text-gray-500 block">Errors</span>
-                                                <span className={`text-sm font-medium ${agent.error_count > 0 ? 'text-red-400' : 'text-gray-300'}`}>
+                                            <div className="text-center p-2 bg-slate-800/50 rounded">
+                                                <span className="text-xs text-slate-500 block">Errors</span>
+                                                <span className={`text-sm font-medium ${agent.error_count > 0 ? 'text-red-400' : 'text-slate-300'}`}>
                                                     {agent.error_count}
                                                 </span>
                                             </div>
-                                            <div className="text-center p-2 bg-gray-800/50 rounded">
-                                                <span className="text-xs text-gray-500 block">Success Rate</span>
+                                            <div className="text-center p-2 bg-slate-800/50 rounded">
+                                                <span className="text-xs text-slate-500 block">Success Rate</span>
                                                 <span className="text-sm font-medium text-green-400">
                                                     {agent.requests_count > 0
                                                         ? (((agent.requests_count - agent.error_count) / agent.requests_count) * 100).toFixed(1)
@@ -247,34 +247,34 @@ export function SystemMetricsPage() {
                             <AlertTriangle className="w-4 h-4 text-yellow-400" />
                             <span className="font-medium text-yellow-400">Self-Evaluation Agent</span>
                         </div>
-                        <p className="text-sm text-gray-400 mb-3">
+                        <p className="text-sm text-slate-400 mb-3">
                             Monitors model drift using PSI (Population Stability Index) and triggers retraining when thresholds are exceeded.
                         </p>
                         <div className="grid grid-cols-3 gap-3">
-                            <div className="p-2 bg-gray-800/50 rounded text-center">
-                                <span className="text-xs text-gray-500 block">PSI Threshold</span>
-                                <span className="text-sm font-medium text-gray-300">0.20</span>
+                            <div className="p-2 bg-slate-800/50 rounded text-center">
+                                <span className="text-xs text-slate-500 block">PSI Threshold</span>
+                                <span className="text-sm font-medium text-slate-300">0.20</span>
                             </div>
-                            <div className="p-2 bg-gray-800/50 rounded text-center">
-                                <span className="text-xs text-gray-500 block">Check Interval</span>
-                                <span className="text-sm font-medium text-gray-300">1 hour</span>
+                            <div className="p-2 bg-slate-800/50 rounded text-center">
+                                <span className="text-xs text-slate-500 block">Check Interval</span>
+                                <span className="text-sm font-medium text-slate-300">1 hour</span>
                             </div>
-                            <div className="p-2 bg-gray-800/50 rounded text-center">
-                                <span className="text-xs text-gray-500 block">Last Check</span>
+                            <div className="p-2 bg-slate-800/50 rounded text-center">
+                                <span className="text-xs text-slate-500 block">Last Check</span>
                                 <span className="text-sm font-medium text-green-400">Stable</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="p-4 bg-gray-700/50 rounded-lg">
-                            <h4 className="font-medium text-gray-200 mb-3">Feature Drift Monitoring</h4>
+                        <div className="p-4 bg-slate-700/50 rounded-lg">
+                            <h4 className="font-medium text-slate-200 mb-3">Feature Drift Monitoring</h4>
                             <div className="space-y-2">
                                 {['packet_size', 'flow_duration', 'byte_rate', 'packet_rate'].map((feature) => (
                                     <div key={feature} className="flex items-center justify-between">
-                                        <span className="text-sm text-gray-400">{feature}</span>
+                                        <span className="text-sm text-slate-400">{feature}</span>
                                         <div className="flex items-center gap-2">
-                                            <div className="w-24 h-2 bg-gray-600 rounded-full overflow-hidden">
+                                            <div className="w-24 h-2 bg-slate-600 rounded-full overflow-hidden">
                                                 <div
                                                     className="h-full bg-green-500 rounded-full"
                                                     style={{ width: `${Math.random() * 30 + 10}%` }}
@@ -287,8 +287,8 @@ export function SystemMetricsPage() {
                             </div>
                         </div>
 
-                        <div className="p-4 bg-gray-700/50 rounded-lg">
-                            <h4 className="font-medium text-gray-200 mb-3">Model Performance</h4>
+                        <div className="p-4 bg-slate-700/50 rounded-lg">
+                            <h4 className="font-medium text-slate-200 mb-3">Model Performance</h4>
                             <div className="space-y-2">
                                 {[
                                     { name: 'Threat Detector', accuracy: 94.5 },
@@ -296,15 +296,15 @@ export function SystemMetricsPage() {
                                     { name: 'Attack Classifier', accuracy: 89.8 },
                                 ].map((model) => (
                                     <div key={model.name} className="flex items-center justify-between">
-                                        <span className="text-sm text-gray-400">{model.name}</span>
+                                        <span className="text-sm text-slate-400">{model.name}</span>
                                         <div className="flex items-center gap-2">
-                                            <div className="w-24 h-2 bg-gray-600 rounded-full overflow-hidden">
+                                            <div className="w-24 h-2 bg-slate-600 rounded-full overflow-hidden">
                                                 <div
                                                     className="h-full bg-cyan-500 rounded-full"
                                                     style={{ width: `${model.accuracy}%` }}
                                                 />
                                             </div>
-                                            <span className="text-xs text-cyan-400">{model.accuracy}%</span>
+                                            <span className="text-xs text-blue-400">{model.accuracy}%</span>
                                         </div>
                                     </div>
                                 ))}

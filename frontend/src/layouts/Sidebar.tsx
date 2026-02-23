@@ -33,15 +33,15 @@ export function Sidebar() {
     return (
         <aside
             className={clsx(
-                'flex flex-col bg-gray-900 border-r border-gray-800 transition-all duration-300',
+                'flex flex-col bg-slate-900/95 border-r border-slate-700/50 transition-all duration-300 backdrop-blur-sm',
                 sidebarCollapsed ? 'w-16' : 'w-64'
             )}
         >
             {/* Logo */}
-            <div className="flex items-center h-16 px-4 border-b border-gray-800">
-                <Shield className="w-8 h-8 text-cyan-400 flex-shrink-0" />
+            <div className="flex items-center h-16 px-4 border-b border-slate-700/50">
+                <Shield className="w-8 h-8 text-blue-400 flex-shrink-0" />
                 {!sidebarCollapsed && (
-                    <span className="ml-3 text-xl font-bold text-cyan-400">ACDADA</span>
+                    <span className="ml-3 text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">ACDADA</span>
                 )}
             </div>
 
@@ -53,16 +53,16 @@ export function Sidebar() {
                         to={to}
                         className={({ isActive }) =>
                             clsx(
-                                'flex items-center px-4 py-3 mx-2 rounded-lg transition-colors',
+                                'flex items-center px-4 py-3 mx-2 rounded-lg transition-all duration-200',
                                 isActive
-                                    ? 'bg-cyan-500/20 text-cyan-400'
-                                    : 'text-gray-400 hover:bg-gray-800 hover:text-gray-200'
+                                    ? 'bg-blue-500/15 text-blue-400 border border-blue-500/30 shadow-sm shadow-blue-500/10'
+                                    : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 border border-transparent'
                             )
                         }
                         title={sidebarCollapsed ? label : undefined}
                     >
                         <Icon className="w-5 h-5 flex-shrink-0" />
-                        {!sidebarCollapsed && <span className="ml-3">{label}</span>}
+                        {!sidebarCollapsed && <span className="ml-3 font-medium">{label}</span>}
                     </NavLink>
                 ))}
             </nav>
@@ -70,7 +70,7 @@ export function Sidebar() {
             {/* Collapse toggle */}
             <button
                 onClick={toggleSidebar}
-                className="flex items-center justify-center h-12 border-t border-gray-800 text-gray-400 hover:text-gray-200 hover:bg-gray-800 transition-colors"
+                className="flex items-center justify-center h-12 border-t border-slate-700/50 text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition-all duration-200"
             >
                 {sidebarCollapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
             </button>

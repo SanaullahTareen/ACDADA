@@ -52,7 +52,7 @@ export function IntelMemoryPage() {
             case 'low':
                 return 'text-green-400 bg-green-500/20';
             default:
-                return 'text-gray-400 bg-gray-500/20';
+                return 'text-slate-400 bg-gray-500/20';
         }
     };
 
@@ -60,8 +60,8 @@ export function IntelMemoryPage() {
         <div className="space-y-6">
             {/* Header */}
             <div>
-                <h2 className="text-2xl font-bold text-gray-100">Threat Intelligence Memory</h2>
-                <p className="text-gray-400 mt-1">
+                <h2 className="text-2xl font-bold text-slate-100">Threat Intelligence Memory</h2>
+                <p className="text-slate-400 mt-1">
                     RAG-based CTI retrieval with semantic search and attack profiling
                 </p>
             </div>
@@ -76,12 +76,12 @@ export function IntelMemoryPage() {
                             onChange={(e) => setQuery(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && handleQueryIntel()}
                             placeholder="Describe the threat (e.g., 'ransomware encryption methods')"
-                            className="flex-1 bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="flex-1 bg-slate-700 border border-slate-600 rounded-lg px-4 py-2 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                         <button
                             onClick={handleQueryIntel}
                             disabled={loading === 'intel' || !query.trim()}
-                            className="flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 disabled:bg-gray-600 rounded-lg text-white transition-colors"
+                            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 rounded-lg text-white transition-colors"
                         >
                             {loading === 'intel' ? <LoadingSpinner size="sm" /> : <Search className="w-4 h-4" />}
                             Search
@@ -98,21 +98,21 @@ export function IntelMemoryPage() {
                         <div className="space-y-4">
                             {/* Summary */}
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div className="p-4 bg-gray-700/50 rounded-lg">
-                                    <span className="text-gray-400 text-sm block mb-1">Likely Category</span>
-                                    <span className="text-lg font-bold text-cyan-400">{intelResult.likely_category}</span>
+                                <div className="p-4 bg-slate-700/50 rounded-lg">
+                                    <span className="text-slate-400 text-sm block mb-1">Likely Category</span>
+                                    <span className="text-lg font-bold text-blue-400">{intelResult.likely_category}</span>
                                 </div>
-                                <div className="p-4 bg-gray-700/50 rounded-lg">
-                                    <span className="text-gray-400 text-sm block mb-1">Likely Severity</span>
+                                <div className="p-4 bg-slate-700/50 rounded-lg">
+                                    <span className="text-slate-400 text-sm block mb-1">Likely Severity</span>
                                     <span
                                         className={`text-lg font-bold px-2 py-1 rounded ${getSeverityColor(intelResult.likely_severity)}`}
                                     >
                                         {intelResult.likely_severity}
                                     </span>
                                 </div>
-                                <div className="p-4 bg-gray-700/50 rounded-lg">
-                                    <span className="text-gray-400 text-sm block mb-1">Confidence</span>
-                                    <span className="text-lg font-bold text-gray-200">
+                                <div className="p-4 bg-slate-700/50 rounded-lg">
+                                    <span className="text-slate-400 text-sm block mb-1">Confidence</span>
+                                    <span className="text-lg font-bold text-slate-200">
                                         {(intelResult.confidence * 100).toFixed(1)}%
                                     </span>
                                 </div>
@@ -120,13 +120,13 @@ export function IntelMemoryPage() {
 
                             {/* Tags */}
                             {intelResult.top_tags.length > 0 && (
-                                <div className="p-4 bg-gray-700/50 rounded-lg">
-                                    <span className="text-gray-400 text-sm block mb-2">Top Tags</span>
+                                <div className="p-4 bg-slate-700/50 rounded-lg">
+                                    <span className="text-slate-400 text-sm block mb-2">Top Tags</span>
                                     <div className="flex flex-wrap gap-2">
                                         {intelResult.top_tags.map((tag, index) => (
                                             <span
                                                 key={index}
-                                                className="flex items-center gap-1 px-2 py-1 bg-cyan-500/20 text-cyan-400 text-sm rounded"
+                                                className="flex items-center gap-1 px-2 py-1 bg-cyan-500/20 text-blue-400 text-sm rounded"
                                             >
                                                 <Tag className="w-3 h-3" />
                                                 {tag}
@@ -139,14 +139,14 @@ export function IntelMemoryPage() {
                             {/* Similar Threats */}
                             {intelResult.similar_threats.length > 0 && (
                                 <div className="space-y-3">
-                                    <h4 className="font-medium text-gray-200">Similar Threats</h4>
+                                    <h4 className="font-medium text-slate-200">Similar Threats</h4>
                                     {intelResult.similar_threats.map((threat, index) => (
-                                        <div key={index} className="p-4 bg-gray-700/50 rounded-lg border border-gray-600">
+                                        <div key={index} className="p-4 bg-slate-700/50 rounded-lg border border-slate-600">
                                             <div className="flex items-start justify-between gap-4">
                                                 <div className="flex-1">
-                                                    <p className="text-gray-200">{threat.text}</p>
+                                                    <p className="text-slate-200">{threat.text}</p>
                                                     <div className="flex items-center gap-3 mt-2">
-                                                        <span className="text-xs text-gray-500">Category: {threat.category}</span>
+                                                        <span className="text-xs text-slate-500">Category: {threat.category}</span>
                                                         <span className={`text-xs px-2 py-0.5 rounded ${getSeverityColor(threat.severity)}`}>
                                                             {threat.severity}
                                                         </span>
@@ -154,7 +154,7 @@ export function IntelMemoryPage() {
                                                     {threat.tags.length > 0 && (
                                                         <div className="flex flex-wrap gap-1 mt-2">
                                                             {threat.tags.slice(0, 5).map((tag, i) => (
-                                                                <span key={i} className="text-xs text-gray-500">
+                                                                <span key={i} className="text-xs text-slate-500">
                                                                     #{tag}
                                                                 </span>
                                                             ))}
@@ -162,10 +162,10 @@ export function IntelMemoryPage() {
                                                     )}
                                                 </div>
                                                 <div className="text-right">
-                                                    <div className="text-lg font-bold text-cyan-400">
+                                                    <div className="text-lg font-bold text-blue-400">
                                                         {(threat.similarity * 100).toFixed(0)}%
                                                     </div>
-                                                    <span className="text-xs text-gray-500">similarity</span>
+                                                    <span className="text-xs text-slate-500">similarity</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -179,7 +179,7 @@ export function IntelMemoryPage() {
                                     <h4 className="font-medium text-green-400 mb-2">Recommendations</h4>
                                     <ul className="space-y-1">
                                         {intelResult.recommendations.map((rec, index) => (
-                                            <li key={index} className="text-sm text-gray-300 flex items-start gap-2">
+                                            <li key={index} className="text-sm text-slate-300 flex items-start gap-2">
                                                 <span className="text-green-400 mt-1">•</span>
                                                 {rec}
                                             </li>
@@ -197,20 +197,20 @@ export function IntelMemoryPage() {
                 <Card title="Attack Profiler">
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm text-gray-400 mb-2">
+                            <label className="block text-sm text-slate-400 mb-2">
                                 Enter IOCs (comma-separated IPs, domains, hashes):
                             </label>
                             <textarea
                                 value={indicators}
                                 onChange={(e) => setIndicators(e.target.value)}
                                 placeholder="e.g., 192.168.1.1, malware.example.com, abc123..."
-                                className="w-full h-20 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-gray-200 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none"
+                                className="w-full h-20 bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-slate-200 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                             />
                         </div>
                         <button
                             onClick={handleProfileAttack}
                             disabled={loading === 'profile' || !indicators.trim()}
-                            className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-gray-600 rounded-lg text-white transition-colors"
+                            className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:bg-slate-600 rounded-lg text-white transition-colors"
                         >
                             {loading === 'profile' ? <LoadingSpinner size="sm" /> : <Brain className="w-4 h-4" />}
                             Profile Indicators
@@ -225,11 +225,11 @@ export function IntelMemoryPage() {
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <span className="text-gray-400 text-sm block">Indicators Analyzed</span>
-                                            <span className="text-xl font-bold text-gray-200">{profileResult.n_indicators}</span>
+                                            <span className="text-slate-400 text-sm block">Indicators Analyzed</span>
+                                            <span className="text-xl font-bold text-slate-200">{profileResult.n_indicators}</span>
                                         </div>
                                         <div>
-                                            <span className="text-gray-400 text-sm block">Overall Severity</span>
+                                            <span className="text-slate-400 text-sm block">Overall Severity</span>
                                             <span
                                                 className={`text-xl font-bold px-2 py-1 rounded ${getSeverityColor(profileResult.overall_severity)}`}
                                             >
@@ -251,11 +251,11 @@ export function IntelMemoryPage() {
                                 {Object.entries(profileResult.attack_categories).map(([category, count]) => (
                                     <div key={category} className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
-                                            <BarChart3 className="w-4 h-4 text-cyan-400" />
-                                            <span className="text-gray-300">{category}</span>
+                                            <BarChart3 className="w-4 h-4 text-blue-400" />
+                                            <span className="text-slate-300">{category}</span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <div className="w-24 h-2 bg-gray-600 rounded-full overflow-hidden">
+                                            <div className="w-24 h-2 bg-slate-600 rounded-full overflow-hidden">
                                                 <div
                                                     className="h-full bg-cyan-500 rounded-full"
                                                     style={{
@@ -263,7 +263,7 @@ export function IntelMemoryPage() {
                                                     }}
                                                 />
                                             </div>
-                                            <span className="text-sm text-gray-400 w-8">{count}</span>
+                                            <span className="text-sm text-slate-400 w-8">{count}</span>
                                         </div>
                                     </div>
                                 ))}
@@ -279,11 +279,11 @@ export function IntelMemoryPage() {
                                         className="flex items-center gap-2 p-2 bg-green-500/10 border border-green-500/30 rounded-lg"
                                     >
                                         <div className="w-2 h-2 bg-green-500 rounded-full" />
-                                        <span className="text-gray-300 text-sm">{rec}</span>
+                                        <span className="text-slate-300 text-sm">{rec}</span>
                                     </div>
                                 ))}
                             </div>
-                            <div className="mt-4 flex items-center gap-1 text-sm text-gray-400">
+                            <div className="mt-4 flex items-center gap-1 text-sm text-slate-400">
                                 <Clock className="w-3 h-3" />
                                 Analysis complete
                             </div>
@@ -295,21 +295,21 @@ export function IntelMemoryPage() {
             {/* Info */}
             <Card title="About Threat Intelligence Memory">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="p-4 bg-gray-700/50 rounded-lg">
-                        <h4 className="font-medium text-cyan-400 mb-2">Vector Store</h4>
-                        <p className="text-sm text-gray-400">
+                    <div className="p-4 bg-slate-700/50 rounded-lg">
+                        <h4 className="font-medium text-blue-400 mb-2">Vector Store</h4>
+                        <p className="text-sm text-slate-400">
                             ChromaDB with sentence-transformers embeddings. 10k+ CTI documents indexed.
                         </p>
                     </div>
-                    <div className="p-4 bg-gray-700/50 rounded-lg">
-                        <h4 className="font-medium text-cyan-400 mb-2">RAG Pipeline</h4>
-                        <p className="text-sm text-gray-400">
+                    <div className="p-4 bg-slate-700/50 rounded-lg">
+                        <h4 className="font-medium text-blue-400 mb-2">RAG Pipeline</h4>
+                        <p className="text-sm text-slate-400">
                             Retrieval-augmented generation with top-k semantic search and reranking.
                         </p>
                     </div>
-                    <div className="p-4 bg-gray-700/50 rounded-lg">
-                        <h4 className="font-medium text-cyan-400 mb-2">Attack Profiles</h4>
-                        <p className="text-sm text-gray-400">
+                    <div className="p-4 bg-slate-700/50 rounded-lg">
+                        <h4 className="font-medium text-blue-400 mb-2">Attack Profiles</h4>
+                        <p className="text-sm text-slate-400">
                             MITRE ATT&CK aligned profiles with TTPs and recommended mitigations.
                         </p>
                     </div>

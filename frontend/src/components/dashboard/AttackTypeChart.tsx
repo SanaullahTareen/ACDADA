@@ -26,21 +26,22 @@ export function AttackTypeChart({ events }: AttackTypeChartProps) {
             <BarChart data={data}>
                 <XAxis
                     dataKey="name"
-                    tick={{ fill: '#9ca3af', fontSize: 11 }}
+                    tick={{ fill: '#94a3b8', fontSize: 11 }}
                     angle={-45}
                     textAnchor="end"
                     height={60}
                 />
-                <YAxis tick={{ fill: '#9ca3af', fontSize: 12 }} />
+                <YAxis tick={{ fill: '#94a3b8', fontSize: 12 }} />
                 <Tooltip
                     contentStyle={{
-                        backgroundColor: '#1f2937',
-                        border: '1px solid #374151',
+                        backgroundColor: '#1e293b',
+                        border: '1px solid #334155',
                         borderRadius: '8px',
+                        boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
                     }}
-                    labelStyle={{ color: '#f3f4f6' }}
+                    labelStyle={{ color: '#f1f5f9' }}
                 />
-                <Bar dataKey="value" fill="#06b6d4" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="value" fill="#3b82f6" radius={[4, 4, 0, 0]} />
             </BarChart>
         </ResponsiveContainer>
     );

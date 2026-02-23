@@ -7,11 +7,11 @@ interface DecisionDistributionChartProps {
 }
 
 const COLORS: Record<DecisionAction, string> = {
-    block_and_redirect: '#ef4444',
-    deploy_deception: '#a855f7',
+    block_and_redirect: '#f43f5e',
+    deploy_deception: '#a78bfa',
     increase_monitoring: '#3b82f6',
-    observe: '#6b7280',
-    allow: '#22c55e',
+    observe: '#64748b',
+    allow: '#10b981',
 };
 
 const LABELS: Record<DecisionAction, string> = {
@@ -45,7 +45,7 @@ export function DecisionDistributionChart({ events }: DecisionDistributionChartP
 
     if (data.length === 0) {
         return (
-            <div className="flex items-center justify-center h-48 text-gray-500">
+            <div className="flex items-center justify-center h-48 text-slate-500">
                 No decision data yet
             </div>
         );
@@ -69,15 +69,16 @@ export function DecisionDistributionChart({ events }: DecisionDistributionChartP
                 </Pie>
                 <Tooltip
                     contentStyle={{
-                        backgroundColor: '#1f2937',
-                        border: '1px solid #374151',
+                        backgroundColor: '#1e293b',
+                        border: '1px solid #334155',
                         borderRadius: '8px',
+                        boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
                     }}
-                    labelStyle={{ color: '#f3f4f6' }}
+                    labelStyle={{ color: '#f1f5f9' }}
                 />
                 <Legend
                     wrapperStyle={{ fontSize: '12px' }}
-                    formatter={(value) => <span style={{ color: '#9ca3af' }}>{value}</span>}
+                    formatter={(value) => <span style={{ color: '#94a3b8' }}>{value}</span>}
                 />
             </PieChart>
         </ResponsiveContainer>

@@ -13,18 +13,18 @@ export type DecisionAction =
     | 'allow';
 
 export const SEVERITY_COLORS: Record<SeverityLevel, string> = {
-    critical: 'text-red-500 bg-red-500/20 border-red-500',
-    high: 'text-orange-500 bg-orange-500/20 border-orange-500',
-    medium: 'text-yellow-500 bg-yellow-500/20 border-yellow-500',
-    low: 'text-green-500 bg-green-500/20 border-green-500',
+    critical: 'text-rose-400 bg-rose-500/10 border-rose-500/30',
+    high: 'text-orange-400 bg-orange-500/10 border-orange-500/30',
+    medium: 'text-amber-400 bg-amber-500/10 border-amber-500/30',
+    low: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
 };
 
 export const DECISION_COLORS: Record<DecisionAction, string> = {
-    block_and_redirect: 'text-red-400 bg-red-500/20',
-    deploy_deception: 'text-purple-400 bg-purple-500/20',
-    increase_monitoring: 'text-blue-400 bg-blue-500/20',
-    observe: 'text-gray-400 bg-gray-500/20',
-    allow: 'text-green-400 bg-green-500/20',
+    block_and_redirect: 'text-rose-400 bg-rose-500/10 border border-rose-500/30',
+    deploy_deception: 'text-violet-400 bg-violet-500/10 border border-violet-500/30',
+    increase_monitoring: 'text-blue-400 bg-blue-500/10 border border-blue-500/30',
+    observe: 'text-slate-400 bg-slate-500/10 border border-slate-500/30',
+    allow: 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/30',
 };
 
 export const ATTACK_TYPES = [

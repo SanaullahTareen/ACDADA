@@ -69,13 +69,13 @@ export function LiveSimulationPage() {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-gray-100">Live Simulation</h2>
-                    <p className="text-gray-400 mt-1">Generate and analyze synthetic network traffic</p>
+                    <h2 className="text-2xl font-bold text-slate-100">Live Simulation</h2>
+                    <p className="text-slate-400 mt-1">Generate and analyze synthetic network traffic</p>
                 </div>
                 <div className="flex items-center gap-3">
                     <button
                         onClick={clearEvents}
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-gray-300 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-slate-300 transition-colors"
                     >
                         <Trash2 className="w-4 h-4" />
                         Clear Events
@@ -88,11 +88,11 @@ export function LiveSimulationPage() {
                 <div className="flex flex-wrap items-center gap-4">
                     {/* Traffic type selector */}
                     <div className="flex items-center gap-2">
-                        <span className="text-gray-400 text-sm">Traffic Type:</span>
+                        <span className="text-slate-400 text-sm">Traffic Type:</span>
                         <select
                             value={simType}
                             onChange={(e) => setSimType(e.target.value as typeof simType)}
-                            className="bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                             <option value="random">Random Mix</option>
                             <option value="attack">Attacks Only</option>
@@ -105,7 +105,7 @@ export function LiveSimulationPage() {
                     <button
                         onClick={simulateOne}
                         disabled={loading}
-                        className="flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 disabled:bg-gray-600 rounded-lg text-white transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 rounded-lg text-white transition-colors"
                     >
                         {loading ? <LoadingSpinner size="sm" /> : <Send className="w-4 h-4" />}
                         Send One
@@ -133,7 +133,7 @@ export function LiveSimulationPage() {
                     </button>
 
                     {/* Rate display */}
-                    <span className="text-gray-500 text-sm">
+                    <span className="text-slate-500 text-sm">
                         Rate: {settings.simulationRate}/sec
                     </span>
                 </div>
@@ -152,52 +152,52 @@ export function LiveSimulationPage() {
                     {lastResult ? (
                         <div className="space-y-4">
                             <div className="flex items-center justify-between">
-                                <span className="text-gray-400">Flow ID</span>
-                                <span className="text-gray-200 font-mono">{lastResult.flow_id}</span>
+                                <span className="text-slate-400">Flow ID</span>
+                                <span className="text-slate-200 font-mono">{lastResult.flow_id}</span>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-gray-400">Severity</span>
+                                <span className="text-slate-400">Severity</span>
                                 <SeverityBadge severity={lastResult.severity} />
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-gray-400">Decision</span>
+                                <span className="text-slate-400">Decision</span>
                                 <DecisionBadge decision={lastResult.decision} />
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-gray-400">Threat</span>
+                                <span className="text-slate-400">Threat</span>
                                 <span className={lastResult.is_threat ? 'text-red-400' : 'text-green-400'}>
                                     {lastResult.is_threat ? 'Yes' : 'No'} ({(lastResult.threat_confidence * 100).toFixed(1)}%)
                                 </span>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-gray-400">Anomaly</span>
+                                <span className="text-slate-400">Anomaly</span>
                                 <span className={lastResult.is_anomaly ? 'text-yellow-400' : 'text-green-400'}>
                                     {lastResult.is_anomaly ? 'Yes' : 'No'} ({(lastResult.anomaly_score * 100).toFixed(1)}%)
                                 </span>
                             </div>
                             {lastResult.attack_type && (
                                 <div className="flex items-center justify-between">
-                                    <span className="text-gray-400">Attack Type</span>
-                                    <span className="text-cyan-400">{lastResult.attack_type}</span>
+                                    <span className="text-slate-400">Attack Type</span>
+                                    <span className="text-blue-400">{lastResult.attack_type}</span>
                                 </div>
                             )}
                             <div className="flex items-center justify-between">
-                                <span className="text-gray-400">Processing Time</span>
-                                <span className="text-gray-200">{lastResult.processing_time_ms.toFixed(2)}ms</span>
+                                <span className="text-slate-400">Processing Time</span>
+                                <span className="text-slate-200">{lastResult.processing_time_ms.toFixed(2)}ms</span>
                             </div>
                             {lastResult.recommendations.length > 0 && (
-                                <div className="border-t border-gray-700 pt-4">
-                                    <span className="text-gray-400 text-sm">Recommendations:</span>
+                                <div className="border-t border-slate-700 pt-4">
+                                    <span className="text-slate-400 text-sm">Recommendations:</span>
                                     <ul className="mt-2 space-y-1">
                                         {lastResult.recommendations.map((rec, i) => (
-                                            <li key={i} className="text-sm text-gray-300">• {rec}</li>
+                                            <li key={i} className="text-sm text-slate-300">• {rec}</li>
                                         ))}
                                     </ul>
                                 </div>
                             )}
                         </div>
                     ) : (
-                        <div className="text-gray-500 text-center py-8">
+                        <div className="text-slate-500 text-center py-8">
                             Send an event to see the analysis result
                         </div>
                     )}

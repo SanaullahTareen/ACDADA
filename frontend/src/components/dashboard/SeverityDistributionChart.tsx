@@ -7,10 +7,10 @@ interface SeverityDistributionChartProps {
 }
 
 const COLORS: Record<SeverityLevel, string> = {
-    critical: '#ef4444',
+    critical: '#f43f5e',
     high: '#f97316',
-    medium: '#eab308',
-    low: '#22c55e',
+    medium: '#f59e0b',
+    low: '#10b981',
 };
 
 export function SeverityDistributionChart({ events }: SeverityDistributionChartProps) {
@@ -29,20 +29,21 @@ export function SeverityDistributionChart({ events }: SeverityDistributionChartP
     return (
         <ResponsiveContainer width="100%" height={200}>
             <BarChart data={data} layout="vertical">
-                <XAxis type="number" tick={{ fill: '#9ca3af', fontSize: 12 }} />
+                <XAxis type="number" tick={{ fill: '#94a3b8', fontSize: 12 }} />
                 <YAxis
                     type="category"
                     dataKey="name"
-                    tick={{ fill: '#9ca3af', fontSize: 12 }}
+                    tick={{ fill: '#94a3b8', fontSize: 12 }}
                     width={80}
                 />
                 <Tooltip
                     contentStyle={{
-                        backgroundColor: '#1f2937',
-                        border: '1px solid #374151',
+                        backgroundColor: '#1e293b',
+                        border: '1px solid #334155',
                         borderRadius: '8px',
+                        boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
                     }}
-                    labelStyle={{ color: '#f3f4f6' }}
+                    labelStyle={{ color: '#f1f5f9' }}
                 />
                 <Bar dataKey="value" radius={[0, 4, 4, 0]}>
                     {data.map((entry, index) => (

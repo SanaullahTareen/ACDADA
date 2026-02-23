@@ -59,22 +59,22 @@ export function SettingsPage() {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-gray-100">Settings</h2>
-                    <p className="text-gray-400 mt-1">
+                    <h2 className="text-2xl font-bold text-slate-100">Settings</h2>
+                    <p className="text-slate-400 mt-1">
                         Configure API endpoints, thresholds, and preferences
                     </p>
                 </div>
                 <div className="flex items-center gap-2">
                     <button
                         onClick={handleReset}
-                        className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-gray-300 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-slate-300 transition-colors"
                     >
                         <RotateCcw className="w-4 h-4" />
                         Reset
                     </button>
                     <button
                         onClick={handleSave}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-white transition-colors ${saved ? 'bg-green-600' : 'bg-cyan-600 hover:bg-cyan-500'
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-white transition-colors ${saved ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-500'
                             }`}
                     >
                         <Save className="w-4 h-4" />
@@ -87,24 +87,24 @@ export function SettingsPage() {
             <Card title="API Configuration" icon={<Server className="w-5 h-5" />}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-sm text-gray-400 mb-1">API URL</label>
+                        <label className="block text-sm text-slate-400 mb-1">API URL</label>
                         <input
                             type="text"
                             value={settings.apiUrl}
                             onChange={(e) => handleChange('apiUrl', e.target.value)}
-                            className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
-                        <p className="text-xs text-gray-500 mt-1">Backend REST API endpoint</p>
+                        <p className="text-xs text-slate-500 mt-1">Backend REST API endpoint</p>
                     </div>
                     <div>
-                        <label className="block text-sm text-gray-400 mb-1">WebSocket URL</label>
+                        <label className="block text-sm text-slate-400 mb-1">WebSocket URL</label>
                         <input
                             type="text"
                             value={settings.wsUrl}
                             onChange={(e) => handleChange('wsUrl', e.target.value)}
-                            className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
-                        <p className="text-xs text-gray-500 mt-1">Real-time event stream endpoint</p>
+                        <p className="text-xs text-slate-500 mt-1">Real-time event stream endpoint</p>
                     </div>
                 </div>
             </Card>
@@ -114,8 +114,8 @@ export function SettingsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <div className="flex items-center justify-between mb-2">
-                            <label className="text-sm text-gray-400">Threat Detection Threshold</label>
-                            <span className="text-cyan-400 font-medium">{settings.threatThreshold.toFixed(2)}</span>
+                            <label className="text-sm text-slate-400">Threat Detection Threshold</label>
+                            <span className="text-blue-400 font-medium">{settings.threatThreshold.toFixed(2)}</span>
                         </div>
                         <input
                             type="range"
@@ -124,17 +124,17 @@ export function SettingsPage() {
                             step="0.05"
                             value={settings.threatThreshold}
                             onChange={(e) => handleChange('threatThreshold', parseFloat(e.target.value))}
-                            className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-xs text-gray-500 mt-1">
+                        <div className="flex justify-between text-xs text-slate-500 mt-1">
                             <span>0 (Sensitive)</span>
                             <span>1 (Strict)</span>
                         </div>
                     </div>
                     <div>
                         <div className="flex items-center justify-between mb-2">
-                            <label className="text-sm text-gray-400">Anomaly Detection Threshold</label>
-                            <span className="text-cyan-400 font-medium">{settings.anomalyThreshold.toFixed(2)}</span>
+                            <label className="text-sm text-slate-400">Anomaly Detection Threshold</label>
+                            <span className="text-blue-400 font-medium">{settings.anomalyThreshold.toFixed(2)}</span>
                         </div>
                         <input
                             type="range"
@@ -143,9 +143,9 @@ export function SettingsPage() {
                             step="0.05"
                             value={settings.anomalyThreshold}
                             onChange={(e) => handleChange('anomalyThreshold', parseFloat(e.target.value))}
-                            className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                         />
-                        <div className="flex justify-between text-xs text-gray-500 mt-1">
+                        <div className="flex justify-between text-xs text-slate-500 mt-1">
                             <span>0 (Sensitive)</span>
                             <span>1 (Strict)</span>
                         </div>
@@ -154,7 +154,7 @@ export function SettingsPage() {
 
                 <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-sm text-gray-400 mb-1">Simulation Rate (ms)</label>
+                        <label className="block text-sm text-slate-400 mb-1">Simulation Rate (ms)</label>
                         <input
                             type="number"
                             min="100"
@@ -162,12 +162,12 @@ export function SettingsPage() {
                             step="100"
                             value={settings.simulationRate}
                             onChange={(e) => handleChange('simulationRate', parseInt(e.target.value))}
-                            className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
-                        <p className="text-xs text-gray-500 mt-1">Event generation interval</p>
+                        <p className="text-xs text-slate-500 mt-1">Event generation interval</p>
                     </div>
                     <div>
-                        <label className="block text-sm text-gray-400 mb-1">Max Events Buffer</label>
+                        <label className="block text-sm text-slate-400 mb-1">Max Events Buffer</label>
                         <input
                             type="number"
                             min="100"
@@ -175,9 +175,9 @@ export function SettingsPage() {
                             step="100"
                             value={settings.maxEvents}
                             onChange={(e) => handleChange('maxEvents', parseInt(e.target.value))}
-                            className="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                            className="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
-                        <p className="text-xs text-gray-500 mt-1">Maximum events in memory</p>
+                        <p className="text-xs text-slate-500 mt-1">Maximum events in memory</p>
                     </div>
                 </div>
             </Card>
@@ -187,8 +187,8 @@ export function SettingsPage() {
                 <div className="space-y-4">
                     <div className="flex items-center justify-between">
                         <div>
-                            <h4 className="font-medium text-gray-200">Auto Reconnect</h4>
-                            <p className="text-sm text-gray-500">Automatically reconnect WebSocket on disconnect</p>
+                            <h4 className="font-medium text-slate-200">Auto Reconnect</h4>
+                            <p className="text-sm text-slate-500">Automatically reconnect WebSocket on disconnect</p>
                         </div>
                         <label className="relative inline-flex items-center cursor-pointer">
                             <input
@@ -197,14 +197,14 @@ export function SettingsPage() {
                                 onChange={(e) => handleChange('autoReconnect', e.target.checked)}
                                 className="sr-only peer"
                             />
-                            <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-600" />
+                            <div className="w-11 h-6 bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600" />
                         </label>
                     </div>
 
                     <div className="flex items-center justify-between">
                         <div>
-                            <h4 className="font-medium text-gray-200">Browser Notifications</h4>
-                            <p className="text-sm text-gray-500">Show desktop notifications for critical events</p>
+                            <h4 className="font-medium text-slate-200">Browser Notifications</h4>
+                            <p className="text-sm text-slate-500">Show desktop notifications for critical events</p>
                         </div>
                         <label className="relative inline-flex items-center cursor-pointer">
                             <input
@@ -213,14 +213,14 @@ export function SettingsPage() {
                                 onChange={(e) => handleChange('notifications', e.target.checked)}
                                 className="sr-only peer"
                             />
-                            <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-600" />
+                            <div className="w-11 h-6 bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600" />
                         </label>
                     </div>
 
                     <div className="flex items-center justify-between">
                         <div>
-                            <h4 className="font-medium text-gray-200">Sound Alerts</h4>
-                            <p className="text-sm text-gray-500">Play audio alerts for critical threats</p>
+                            <h4 className="font-medium text-slate-200">Sound Alerts</h4>
+                            <p className="text-sm text-slate-500">Play audio alerts for critical threats</p>
                         </div>
                         <label className="relative inline-flex items-center cursor-pointer">
                             <input
@@ -229,7 +229,7 @@ export function SettingsPage() {
                                 onChange={(e) => handleChange('soundAlerts', e.target.checked)}
                                 className="sr-only peer"
                             />
-                            <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-600" />
+                            <div className="w-11 h-6 bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600" />
                         </label>
                     </div>
                 </div>
@@ -239,8 +239,8 @@ export function SettingsPage() {
             <Card title="Appearance" icon={<Palette className="w-5 h-5" />}>
                 <div className="flex items-center justify-between">
                     <div>
-                        <h4 className="font-medium text-gray-200">Dark Mode</h4>
-                        <p className="text-sm text-gray-500">Use dark theme (recommended for SOC environments)</p>
+                        <h4 className="font-medium text-slate-200">Dark Mode</h4>
+                        <p className="text-sm text-slate-500">Use dark theme (recommended for SOC environments)</p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                         <input
@@ -249,7 +249,7 @@ export function SettingsPage() {
                             onChange={(e) => handleChange('darkMode', e.target.checked)}
                             className="sr-only peer"
                         />
-                        <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-cyan-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-600" />
+                        <div className="w-11 h-6 bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600" />
                     </label>
                 </div>
             </Card>
@@ -257,20 +257,20 @@ export function SettingsPage() {
             {/* About */}
             <Card title="About">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="p-4 bg-gray-700/50 rounded-lg text-center">
-                        <h4 className="text-cyan-400 font-medium mb-1">ACDADA</h4>
-                        <p className="text-sm text-gray-400">v1.0.0</p>
+                    <div className="p-4 bg-slate-700/50 rounded-lg text-center">
+                        <h4 className="text-blue-400 font-medium mb-1">ACDADA</h4>
+                        <p className="text-sm text-slate-400">v1.0.0</p>
                     </div>
-                    <div className="p-4 bg-gray-700/50 rounded-lg text-center">
-                        <h4 className="text-cyan-400 font-medium mb-1">Agents</h4>
-                        <p className="text-sm text-gray-400">7 ML Agents</p>
+                    <div className="p-4 bg-slate-700/50 rounded-lg text-center">
+                        <h4 className="text-blue-400 font-medium mb-1">Agents</h4>
+                        <p className="text-sm text-slate-400">7 ML Agents</p>
                     </div>
-                    <div className="p-4 bg-gray-700/50 rounded-lg text-center">
-                        <h4 className="text-cyan-400 font-medium mb-1">Models</h4>
-                        <p className="text-sm text-gray-400">CNN, LSTM, AE, VAE, DQN, XGBoost</p>
+                    <div className="p-4 bg-slate-700/50 rounded-lg text-center">
+                        <h4 className="text-blue-400 font-medium mb-1">Models</h4>
+                        <p className="text-sm text-slate-400">CNN, LSTM, AE, VAE, DQN, XGBoost</p>
                     </div>
                 </div>
-                <p className="text-sm text-gray-500 mt-4 text-center">
+                <p className="text-sm text-slate-500 mt-4 text-center">
                     Autonomous Cyber Deception & Adaptive Defense Agent
                 </p>
             </Card>

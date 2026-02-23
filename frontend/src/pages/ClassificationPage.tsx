@@ -64,8 +64,8 @@ export function ClassificationPage() {
         <div className="space-y-6">
             {/* Header */}
             <div>
-                <h2 className="text-2xl font-bold text-gray-100">Attack Classification</h2>
-                <p className="text-gray-400 mt-1">
+                <h2 className="text-2xl font-bold text-slate-100">Attack Classification</h2>
+                <p className="text-slate-400 mt-1">
                     Multi-class classification using XGBoost + DNN ensemble
                 </p>
             </div>
@@ -74,28 +74,28 @@ export function ClassificationPage() {
             <Card title="Feature Input">
                 <div className="space-y-4">
                     <div>
-                        <label className="block text-sm text-gray-400 mb-2">
+                        <label className="block text-sm text-slate-400 mb-2">
                             Enter feature vector (comma-separated):
                         </label>
                         <textarea
                             value={features}
                             onChange={(e) => setFeatures(e.target.value)}
                             placeholder="Leave empty for random features"
-                            className="w-full h-24 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-gray-200 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none"
+                            className="w-full h-24 bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-slate-200 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                         />
                     </div>
                     <div className="flex items-center gap-3">
                         <button
                             onClick={handleClassify}
                             disabled={loading}
-                            className="flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 disabled:bg-gray-600 rounded-lg text-white transition-colors"
+                            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 rounded-lg text-white transition-colors"
                         >
                             {loading ? <LoadingSpinner size="sm" /> : <Crosshair className="w-4 h-4" />}
                             Classify Attack
                         </button>
                         <button
                             onClick={handleGenerateRandom}
-                            className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-gray-300 transition-colors"
+                            className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-slate-300 transition-colors"
                         >
                             Generate Random
                         </button>
@@ -116,29 +116,29 @@ export function ClassificationPage() {
                         <div className="space-y-6">
                             <div className="text-center">
                                 <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-cyan-500/20 border-2 border-cyan-500 mb-4">
-                                    <Crosshair className="w-10 h-10 text-cyan-400" />
+                                    <Crosshair className="w-10 h-10 text-blue-400" />
                                 </div>
-                                <h3 className="text-3xl font-bold text-cyan-400">{result.attack_type}</h3>
-                                <p className="text-gray-400 mt-1">
+                                <h3 className="text-3xl font-bold text-blue-400">{result.attack_type}</h3>
+                                <p className="text-slate-400 mt-1">
                                     Confidence: {(result.confidence * 100).toFixed(1)}%
                                 </p>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
-                                <div className="text-center p-3 bg-gray-700/50 rounded-lg">
-                                    <span className="text-gray-400 text-sm block">Class ID</span>
-                                    <span className="text-xl font-bold text-gray-200">{result.attack_type_id}</span>
+                                <div className="text-center p-3 bg-slate-700/50 rounded-lg">
+                                    <span className="text-slate-400 text-sm block">Class ID</span>
+                                    <span className="text-xl font-bold text-slate-200">{result.attack_type_id}</span>
                                 </div>
-                                <div className="text-center p-3 bg-gray-700/50 rounded-lg">
-                                    <span className="text-gray-400 text-sm block">Latency</span>
-                                    <span className="text-xl font-bold text-gray-200">
+                                <div className="text-center p-3 bg-slate-700/50 rounded-lg">
+                                    <span className="text-slate-400 text-sm block">Latency</span>
+                                    <span className="text-xl font-bold text-slate-200">
                                         {result.latency_ms.toFixed(1)}ms
                                     </span>
                                 </div>
                             </div>
                         </div>
                     ) : (
-                        <div className="flex items-center justify-center h-48 text-gray-500">
+                        <div className="flex items-center justify-center h-48 text-slate-500">
                             Run classification to see results
                         </div>
                     )}
@@ -177,7 +177,7 @@ export function ClassificationPage() {
                             </BarChart>
                         </ResponsiveContainer>
                     ) : (
-                        <div className="flex items-center justify-center h-64 text-gray-500">
+                        <div className="flex items-center justify-center h-64 text-slate-500">
                             Run classification to see probability distribution
                         </div>
                     )}
@@ -190,13 +190,13 @@ export function ClassificationPage() {
                     {ATTACK_TYPES.map((type, index) => (
                         <div
                             key={type}
-                            className="flex items-center gap-2 p-2 bg-gray-700/50 rounded-lg"
+                            className="flex items-center gap-2 p-2 bg-slate-700/50 rounded-lg"
                         >
                             <div
                                 className="w-3 h-3 rounded-full"
                                 style={{ backgroundColor: COLORS[index] }}
                             />
-                            <span className="text-gray-300 text-sm">{type}</span>
+                            <span className="text-slate-300 text-sm">{type}</span>
                         </div>
                     ))}
                 </div>

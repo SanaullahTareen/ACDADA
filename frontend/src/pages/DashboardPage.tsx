@@ -23,8 +23,8 @@ export function DashboardPage() {
         <div className="space-y-6">
             {/* Page header */}
             <div>
-                <h2 className="text-2xl font-bold text-gray-100">System Overview</h2>
-                <p className="text-gray-400 mt-1">Real-time cyber defense monitoring dashboard</p>
+                <h2 className="text-2xl font-bold text-slate-100">System Overview</h2>
+                <p className="text-slate-400 mt-1">Real-time cyber defense monitoring dashboard</p>
             </div>
 
             {/* KPI Cards */}
@@ -32,25 +32,25 @@ export function DashboardPage() {
                 <KPICard
                     title="System Health"
                     value={healthLoading ? '...' : `${systemStatus?.overall_health?.toFixed(0) || 0}%`}
-                    icon={<Activity className="w-5 h-5 text-cyan-400" />}
+                    icon={<Activity className="w-5 h-5 text-sky-400" />}
                     color="cyan"
                 />
                 <KPICard
                     title="Threats Detected"
                     value={threatCount}
-                    icon={<Shield className="w-5 h-5 text-red-400" />}
+                    icon={<Shield className="w-5 h-5 text-rose-400" />}
                     color="red"
                 />
                 <KPICard
                     title="Anomalies"
                     value={anomalyCount}
-                    icon={<AlertTriangle className="w-5 h-5 text-yellow-400" />}
+                    icon={<AlertTriangle className="w-5 h-5 text-amber-400" />}
                     color="yellow"
                 />
                 <KPICard
                     title="Critical Alerts"
                     value={criticalCount}
-                    icon={<Zap className="w-5 h-5 text-red-400" />}
+                    icon={<Zap className="w-5 h-5 text-rose-400" />}
                     color="red"
                 />
                 <KPICard
@@ -82,15 +82,15 @@ export function DashboardPage() {
                             Object.entries(systemStatus.agents).map(([name, { loaded }]) => (
                                 <div
                                     key={name}
-                                    className="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg"
+                                    className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-700/50 transition-all hover:bg-slate-700/50"
                                 >
-                                    <span className="text-gray-300 capitalize">
+                                    <span className="text-slate-300 capitalize font-medium">
                                         {name.replace(/_/g, ' ')}
                                     </span>
                                     <span
-                                        className={`px-2 py-1 rounded-full text-xs ${loaded
-                                                ? 'bg-green-500/20 text-green-400'
-                                                : 'bg-red-500/20 text-red-400'
+                                        className={`px-2.5 py-1 rounded-full text-xs font-medium border ${loaded
+                                                ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+                                                : 'bg-rose-500/10 text-rose-400 border-rose-500/30'
                                             }`}
                                     >
                                         {loaded ? 'Loaded' : 'Offline'}
@@ -98,7 +98,7 @@ export function DashboardPage() {
                                 </div>
                             ))
                         ) : (
-                            <div className="text-gray-500 text-center py-8">
+                            <div className="text-slate-500 text-center py-8">
                                 {health ? 'No agents data' : 'Connect to backend to see agent status'}
                             </div>
                         )}

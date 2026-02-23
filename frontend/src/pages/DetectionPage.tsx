@@ -51,8 +51,8 @@ export function DetectionPage() {
         <div className="space-y-6">
             {/* Header */}
             <div>
-                <h2 className="text-2xl font-bold text-gray-100">Detection Analysis</h2>
-                <p className="text-gray-400 mt-1">
+                <h2 className="text-2xl font-bold text-slate-100">Detection Analysis</h2>
+                <p className="text-slate-400 mt-1">
                     Test threat detection and anomaly detection models individually
                 </p>
             </div>
@@ -61,28 +61,28 @@ export function DetectionPage() {
             <Card title="Feature Input">
                 <div className="space-y-4">
                     <div>
-                        <label className="block text-sm text-gray-400 mb-2">
+                        <label className="block text-sm text-slate-400 mb-2">
                             Enter feature vector (comma-separated values):
                         </label>
                         <textarea
                             value={features}
                             onChange={(e) => setFeatures(e.target.value)}
                             placeholder="0.5, 0.3, 0.8, 0.2, ... (leave empty for random)"
-                            className="w-full h-24 bg-gray-700 border border-gray-600 rounded-lg px-3 py-2 text-gray-200 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none"
+                            className="w-full h-24 bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-slate-200 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                         />
                     </div>
                     <div className="flex items-center gap-3">
                         <button
                             onClick={handleDetect}
                             disabled={loading}
-                            className="flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 disabled:bg-gray-600 rounded-lg text-white transition-colors"
+                            className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 rounded-lg text-white transition-colors"
                         >
                             {loading ? <LoadingSpinner size="sm" /> : <Send className="w-4 h-4" />}
                             Run Detection
                         </button>
                         <button
                             onClick={handleGenerateRandom}
-                            className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-gray-300 transition-colors"
+                            className="px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg text-slate-300 transition-colors"
                         >
                             Generate Random
                         </button>
@@ -123,8 +123,8 @@ export function DetectionPage() {
                                 </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
-                                <div className="text-center p-3 bg-gray-700/50 rounded-lg">
-                                    <span className="text-gray-400 text-sm block">Result</span>
+                                <div className="text-center p-3 bg-slate-700/50 rounded-lg">
+                                    <span className="text-slate-400 text-sm block">Result</span>
                                     <span
                                         className={`font-bold ${threatResult.is_threat ? 'text-red-400' : 'text-green-400'
                                             }`}
@@ -132,17 +132,17 @@ export function DetectionPage() {
                                         {threatResult.is_threat ? 'THREAT' : 'BENIGN'}
                                     </span>
                                 </div>
-                                <div className="text-center p-3 bg-gray-700/50 rounded-lg">
-                                    <span className="text-gray-400 text-sm block">Model</span>
-                                    <span className="text-cyan-400 text-sm">{threatResult.model_used}</span>
+                                <div className="text-center p-3 bg-slate-700/50 rounded-lg">
+                                    <span className="text-slate-400 text-sm block">Model</span>
+                                    <span className="text-blue-400 text-sm">{threatResult.model_used}</span>
                                 </div>
                             </div>
-                            <div className="text-center text-gray-500 text-sm">
+                            <div className="text-center text-slate-500 text-sm">
                                 Latency: {threatResult.latency_ms.toFixed(2)}ms
                             </div>
                         </div>
                     ) : (
-                        <div className="flex items-center justify-center h-48 text-gray-500">
+                        <div className="flex items-center justify-center h-48 text-slate-500">
                             Run detection to see results
                         </div>
                     )}
@@ -177,56 +177,56 @@ export function DetectionPage() {
                             {/* Method breakdown */}
                             <div className="space-y-2">
                                 <div className="flex items-center justify-between text-sm">
-                                    <span className="text-gray-400">Autoencoder</span>
+                                    <span className="text-slate-400">Autoencoder</span>
                                     <div className="flex items-center gap-2">
-                                        <div className="w-32 h-2 bg-gray-700 rounded-full">
+                                        <div className="w-32 h-2 bg-slate-700 rounded-full">
                                             <div
                                                 className="h-full bg-cyan-500 rounded-full"
                                                 style={{ width: `${anomalyResult.method_scores.ae * 100}%` }}
                                             />
                                         </div>
-                                        <span className="text-gray-300 w-12 text-right">
+                                        <span className="text-slate-300 w-12 text-right">
                                             {(anomalyResult.method_scores.ae * 100).toFixed(0)}%
                                         </span>
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-between text-sm">
-                                    <span className="text-gray-400">VAE</span>
+                                    <span className="text-slate-400">VAE</span>
                                     <div className="flex items-center gap-2">
-                                        <div className="w-32 h-2 bg-gray-700 rounded-full">
+                                        <div className="w-32 h-2 bg-slate-700 rounded-full">
                                             <div
                                                 className="h-full bg-purple-500 rounded-full"
                                                 style={{ width: `${anomalyResult.method_scores.vae * 100}%` }}
                                             />
                                         </div>
-                                        <span className="text-gray-300 w-12 text-right">
+                                        <span className="text-slate-300 w-12 text-right">
                                             {(anomalyResult.method_scores.vae * 100).toFixed(0)}%
                                         </span>
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-between text-sm">
-                                    <span className="text-gray-400">Isolation Forest</span>
+                                    <span className="text-slate-400">Isolation Forest</span>
                                     <div className="flex items-center gap-2">
-                                        <div className="w-32 h-2 bg-gray-700 rounded-full">
+                                        <div className="w-32 h-2 bg-slate-700 rounded-full">
                                             <div
                                                 className="h-full bg-orange-500 rounded-full"
                                                 style={{ width: `${anomalyResult.method_scores.if * 100}%` }}
                                             />
                                         </div>
-                                        <span className="text-gray-300 w-12 text-right">
+                                        <span className="text-slate-300 w-12 text-right">
                                             {(anomalyResult.method_scores.if * 100).toFixed(0)}%
                                         </span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="text-center text-gray-500 text-sm">
+                            <div className="text-center text-slate-500 text-sm">
                                 Threshold: {(anomalyResult.threshold * 100).toFixed(0)}% | Latency:{' '}
                                 {anomalyResult.latency_ms.toFixed(2)}ms
                             </div>
                         </div>
                     ) : (
-                        <div className="flex items-center justify-center h-48 text-gray-500">
+                        <div className="flex items-center justify-center h-48 text-slate-500">
                             Run detection to see results
                         </div>
                     )}
