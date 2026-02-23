@@ -1,0 +1,9 @@
+export { DashboardPage } from './DashboardPage';
+export { LiveSimulationPage } from './LiveSimulationPage';
+export { DetectionPage } from './DetectionPage';
+export { ClassificationPage } from './ClassificationPage';
+export { DeceptionPage } from './DeceptionPage';
+export { IntelMemoryPage } from './IntelMemoryPage';
+export { SystemMetricsPage } from './SystemMetricsPage';
+export { EventsPage } from './EventsPage';
+export { SettingsPage } from './SettingsPage';
