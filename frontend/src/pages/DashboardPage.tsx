@@ -89,8 +89,8 @@ export function DashboardPage() {
                                     </span>
                                     <span
                                         className={`px-2.5 py-1 rounded-full text-xs font-medium border ${loaded
-                                                ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                                                : 'bg-rose-500/10 text-rose-400 border-rose-500/30'
+                                            ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+                                            : 'bg-rose-500/10 text-rose-400 border-rose-500/30'
                                             }`}
                                     >
                                         {loaded ? 'Loaded' : 'Offline'}

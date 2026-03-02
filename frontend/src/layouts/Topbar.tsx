@@ -26,8 +26,8 @@ export function Topbar() {
                 <div
                     className={clsx(
                         'flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium border transition-all',
-                        isWsConnected 
-                            ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' 
+                        isWsConnected
+                            ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
                             : 'bg-red-500/10 text-red-400 border-red-500/30'
                     )}
                 >
@@ -45,8 +45,8 @@ export function Topbar() {
                     <div
                         className={clsx(
                             'flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium border transition-all',
-                            health.status === 'ok' 
-                                ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' 
+                            health.status === 'ok'
+                                ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
                                 : 'bg-amber-500/10 text-amber-400 border-amber-500/30'
                         )}
                     >
