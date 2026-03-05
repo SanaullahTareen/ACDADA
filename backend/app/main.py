@@ -19,6 +19,7 @@ from fastapi import (
 )
 from fastapi.middleware.cors import CORSMiddleware
 import joblib
+import uvicorn
 
 from app.core.config import MODELS_DIR, DEVICE, CORS_ORIGINS
 from app.schemas.requests import (
