@@ -282,14 +282,14 @@ class ThreatDetector:
         x = torch.tensor([features], dtype=torch.float32).to(self.device)
         logits = net(x)
         probs = torch.softmax(logits, dim=1)
-        pred = torch.argmax(probs, dim=1).item()
-        confidence = probs[0, pred].item()
+        pred = int(torch.argmax(probs, dim=1).item())
+        confidence = float(probs[0, pred].item())
 
         return {
-            "is_threat": pred == 1,
+            "is_threat": bool(pred == 1),
             "confidence": confidence,
             "model_used": model_name,
-            "probabilities": {"benign": probs[0, 0].item(), "threat": probs[0, 1].item()}
+            "probabilities": {"benign": float(probs[0, 0].item()), "threat": float(probs[0, 1].item())}
         }
 
 
@@ -324,13 +324,13 @@ class AnomalyDetector:
             if_score = -self.iforest.score_samples(np.array([features]))[0]
             scores["isolation_forest"] = min(max(if_score, 0), 1.0)
 
-        ensemble_score = np.mean(list(scores.values())) if scores else 0.0
+        ensemble_score = float(np.mean(list(scores.values()))) if scores else 0.0
 
         return {
-            "is_anomaly": ensemble_score > thresh,
-            "anomaly_score": float(ensemble_score),
-            "threshold": thresh,
-            "method_scores": scores
+            "is_anomaly": bool(ensemble_score > thresh),
+            "anomaly_score": ensemble_score,
+            "threshold": float(thresh),
+            "method_scores": {k: float(v) for k, v in scores.items()}
         }
 
 
@@ -365,13 +365,13 @@ class AttackClassifier:
             confidence = float(ensemble_probs[pred_idx])
             attack_type = self.classes[pred_idx] if pred_idx < len(self.classes) else "Unknown"
         else:
-            attack_type, confidence, ensemble_probs = "Unknown", 0.0, []
+            attack_type, confidence, ensemble_probs, pred_idx = "Unknown", 0.0, [], 0
 
         return {
             "attack_type": attack_type,
+            "attack_type_id": pred_idx,
             "confidence": confidence,
-            "class_probabilities": {c: float(ensemble_probs[i]) for i, c in enumerate(self.classes)} if len(ensemble_probs) else {},
-            "model_used": model
+            "probabilities": {c: float(ensemble_probs[i]) for i, c in enumerate(self.classes)} if len(ensemble_probs) else {},
         }
 
 
@@ -415,27 +415,31 @@ class DeceptionAgent:
                 action_idx = 0  # do_nothing
 
         action_name = self.ACTIONS[action_idx] if action_idx < len(self.ACTIONS) else "do_nothing"
-        return {"action_id": action_idx, "action_name": action_name, "threat_level": threat_level}
+        model_type = "DQN" if self.dqn else "Heuristic"
+        return {"action_id": action_idx, "action_name": action_name, "model_type": model_type}
 
 
 class ThreatIntelEngine:
-    """Threat intelligence query engine using FAISS + TF-IDF."""
-    def __init__(self, faiss_index, tfidf_vectorizer, svd_model, metadata: List[Dict] = None):
+    """Threat intelligence query engine using FAISS + sentence embeddings."""
+    def __init__(self, faiss_index, embedder, metadata: List[Dict] = None):
         self.index = faiss_index
-        self.vectorizer = tfidf_vectorizer
-        self.svd = svd_model
+        self.embedder = embedder
         self.metadata = metadata or []
 
     def query(self, description: str, k: int = 5) -> Dict[str, Any]:
-        if not self.vectorizer or not self.index:
-            return {"similar_threats": [], "recommendations": [], "likely_category": "Unknown"}
+        if not self.embedder or not self.index:
+            return {
+                "similar_threats": [],
+                "recommendations": ["Unable to query threat intelligence"],
+                "likely_category": "Unknown",
+                "likely_severity": "unknown",
+                "confidence": 0.0,
+                "top_tags": []
+            }
 
-        tfidf_vec = self.vectorizer.transform([description])
-        if self.svd:
-            query_vec = self.svd.transform(tfidf_vec).astype(np.float32)
-        else:
-            query_vec = tfidf_vec.toarray().astype(np.float32)
-
+        # Embed query using sentence-transformers
+        query_vec = self.embedder.encode([description], convert_to_numpy=True).astype(np.float32)
+        
         distances, indices = self.index.search(query_vec, k)
 
         results = []
@@ -444,14 +448,29 @@ class ThreatIntelEngine:
                 results.append({"id": int(idx), "distance": float(distances[0][i]), **self.metadata[idx]})
 
         recommendations = []
+        categories = set()
+        tags = set()
         if results:
-            cat = results[0].get("category", "Unknown")
-            recommendations = [f"Monitor for {cat} attack patterns", "Update IDS signatures", "Review access logs"]
+            for r in results:
+                cat = r.get("category", "unknown")
+                categories.add(cat)
+                for tag in r.get("tags", []):
+                    tags.add(tag)
+            primary_cat = results[0].get("category", "unknown") 
+            recommendations = [
+                f"Monitor for {primary_cat} attack patterns",
+                "Update intrusion detection signatures",
+                "Review network and system logs",
+                "Consider implementing additional access controls"
+            ]
 
         return {
-            "similar_threats": results,
+            "similar_threats": results[:k],
             "recommendations": recommendations,
-            "likely_category": results[0].get("category", "Unknown") if results else "Unknown"
+            "likely_category": results[0].get("category", "Unknown") if results else "Unknown",
+            "likely_severity": results[0].get("severity", "medium") if results else "unknown",
+            "confidence": 1.0 - (results[0].get("distance", 1.0) / 2.0) if results else 0.0,
+            "top_tags": list(tags)[:10]
         }
 
 
@@ -529,7 +548,9 @@ def load_anomaly_models() -> Optional[AnomalyDetector]:
     if_path = anomaly_dir / "isolation_forest.joblib"
     if if_path.exists():
         try:
-            iforest = joblib.load(if_path)
+            loaded = joblib.load(if_path)
+            # Handle dict wrapper from training
+            iforest = loaded.get("model", loaded) if isinstance(loaded, dict) else loaded
             print(f"  [AnomalyDetector] Loaded Isolation Forest")
         except Exception as e:
             print(f"  [AnomalyDetector] Failed to load IF: {e}")
@@ -587,7 +608,9 @@ def load_classifier_models() -> Optional[AttackClassifier]:
     xgb_path = class_dir / "xgboost_classifier.joblib"
     if xgb_path.exists():
         try:
-            xgb_model = joblib.load(xgb_path)
+            loaded = joblib.load(xgb_path)
+            # Handle dict wrapper from training
+            xgb_model = loaded.get("model", loaded) if isinstance(loaded, dict) else loaded
             print(f"  [AttackClassifier] Loaded XGBoost")
         except Exception as e:
             print(f"  [AttackClassifier] Failed to load XGBoost: {e}")
@@ -627,33 +650,34 @@ def load_deception_model() -> Optional[DeceptionAgent]:
 
 
 def load_threat_intel() -> Optional[ThreatIntelEngine]:
-    """Load threat intelligence engine."""
+    """Load threat intelligence engine with sentence-transformer embeddings."""
     intel_dir = MODELS_DIR / "threat_intel"
 
-    tfidf = None
-    svd = None
+    embedder = None
     faiss_index = None
     metadata = []
 
-    # Load TF-IDF vectorizer
-    tfidf_path = intel_dir / "tfidf_vectorizer.joblib"
-    if tfidf_path.exists():
+    # Load sentence-transformer model for embeddings
+    config_path = intel_dir / "embedder_config.json"
+    model_name = "all-MiniLM-L6-v2"  # default
+    if config_path.exists():
         try:
-            tfidf = joblib.load(tfidf_path)
-            print(f"  [ThreatIntel] Loaded TF-IDF vectorizer")
-        except Exception as e:
-            print(f"  [ThreatIntel] Failed to load TF-IDF: {e}")
+            with open(config_path, "r") as f:
+                config = json.load(f)
+                model_name = config.get("model_name", model_name)
+        except:
+            pass
 
-    # Load SVD
-    svd_path = intel_dir / "tfidf_svd.joblib"
-    if svd_path.exists():
-        try:
-            svd = joblib.load(svd_path)
-            print(f"  [ThreatIntel] Loaded SVD")
-        except Exception as e:
-            print(f"  [ThreatIntel] Failed to load SVD: {e}")
+    try:
+        from sentence_transformers import SentenceTransformer
+        embedder = SentenceTransformer(model_name)
+        print(f"  [ThreatIntel] Loaded embedder: {model_name}")
+    except ImportError:
+        print("  [ThreatIntel] sentence-transformers not installed, using fallback")
+    except Exception as e:
+        print(f"  [ThreatIntel] Failed to load embedder: {e}")
 
-    # Load FAISS index - check actual filename
+    # Load FAISS index
     faiss_dir = intel_dir / "faiss"
     for index_name in ["faiss_index.bin", "index.faiss", "index.bin"]:
         index_path = faiss_dir / index_name
@@ -666,7 +690,7 @@ def load_threat_intel() -> Optional[ThreatIntelEngine]:
             except Exception as e:
                 print(f"  [ThreatIntel] Failed to load FAISS from {index_name}: {e}")
 
-    # Load metadata (try both .json and .joblib)
+    # Load metadata
     for meta_name in ["metadata.json", "metadata.joblib"]:
         meta_path = faiss_dir / meta_name
         if meta_path.exists():
@@ -681,8 +705,8 @@ def load_threat_intel() -> Optional[ThreatIntelEngine]:
             except Exception as e:
                 print(f"  [ThreatIntel] Failed to load metadata: {e}")
 
-    if not tfidf or not faiss_index:
-        print("  [ThreatIntel] Incomplete setup (missing TF-IDF or FAISS)")
+    if not embedder or not faiss_index:
+        print("  [ThreatIntel] Incomplete setup (missing embedder or FAISS)")
         return None
 
-    return ThreatIntelEngine(faiss_index, tfidf, svd, metadata)
+    return ThreatIntelEngine(faiss_index, embedder, metadata)

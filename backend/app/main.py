@@ -223,8 +223,9 @@ async def analyze_full_pipeline(req: AnalyzeRequest):
         anomaly_res = {"is_anomaly": False, "anomaly_score": 0.0, "threshold": 0.5, "method_scores": {}}
     agent_outputs["anomaly_detector"] = anomaly_res
 
-    is_threat = threat_res.get("is_threat", False)
-    is_anomaly = anomaly_res.get("is_anomaly", False)
+    # Convert numpy.bool to Python bool for serialization
+    is_threat = bool(threat_res.get("is_threat", False))
+    is_anomaly = bool(anomaly_res.get("is_anomaly", False))
 
     # 3. Classify (if threat or anomaly)
     attack_type = None
