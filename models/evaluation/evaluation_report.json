@@ -1,0 +1,114 @@
+{
+  "system_status": {
+    "overall_health": 81.35325868145415,
+    "n_agents": 3,
+    "n_alerts": 3,
+    "recent_alerts": [
+      {
+        "timestamp": 1772703457.8078501,
+        "agent": "ThreatDetector",
+        "level": "WARNING",
+        "message": "Health score 79.1 below warning threshold 85"
+      },
+      {
+        "timestamp": 1772703560.4958162,
+        "agent": "AnomalyDetector",
+        "level": "WARNING",
+        "message": "Health score 81.6 below warning threshold 85"
+      },
+      {
+        "timestamp": 1772703659.9076815,
+        "agent": "AttackClassifier",
+        "level": "WARNING",
+        "message": "Health score 83.3 below warning threshold 85"
+      }
+    ],
+    "agents": {
+      "ThreatDetector": {
+        "health": 79.10812133685721,
+        "f1": 0.8324324324324325,
+        "n_evaluations": 10
+      },
+      "AnomalyDetector": {
+        "health": 81.62050271186666,
+        "f1": 0.8584905660377359,
+        "n_evaluations": 10
+      },
+      "AttackClassifier": {
+        "health": 83.33115199563858,
+        "f1": 0.8543689320388349,
+        "n_evaluations": 10
+      }
+    }
+  },
+  "agent_metrics": {
+    "ThreatDetector": {
+      "agent_name": "ThreatDetector",
+      "timestamp": 1772702896.2915864,
+      "accuracy": 0.959,
+      "precision": 0.9447731755424064,
+      "recall": 0.9735772357723578,
+      "f1": 0.958958958958959,
+      "auc_roc": 0.999950987452788,
+      "mcc": 0.9184315659472917,
+      "fpr": 0.05511811023622047,
+      "latency_ms": 0.0,
+      "throughput": 0.0,
+      "health_score": 96.89083560055509
+    },
+    "AnomalyDetector": {
+      "agent_name": "AnomalyDetector",
+      "timestamp": 1772702896.3397949,
+      "accuracy": 0.972,
+      "precision": 0.9649805447470817,
+      "recall": 0.9802371541501976,
+      "f1": 0.9725490196078431,
+      "auc_roc": 0.9999249891984446,
+      "mcc": 0.9441021117403161,
+      "fpr": 0.03643724696356275,
+      "latency_ms": 0.0,
+      "throughput": 0.0,
+      "health_score": 97.9317324256308
+    },
+    "AttackClassifier": {
+      "agent_name": "AttackClassifier",
+      "timestamp": 1772702896.3697808,
+      "accuracy": 0.9565,
+      "precision": 0.9457593688362919,
+      "recall": 0.9677093844601413,
+      "f1": 0.9566084788029925,
+      "auc_roc": 0.999981998541882,
+      "mcc": 0.9132524869793763,
+      "fpr": 0.05450941526263627,
+      "latency_ms": 0.0,
+      "throughput": 0.0,
+      "health_score": 96.63752382739386
+    }
+  },
+  "deception_metrics": {
+    "deception_success_rate": 0.9637002341920374,
+    "real_asset_protection": 0.845,
+    "detection_latency": 13.215469613259668,
+    "overall_effectiveness": 94.27303083528493
+  },
+  "alerts": [
+    {
+      "timestamp": 1772703457.8078501,
+      "agent": "ThreatDetector",
+      "level": "WARNING",
+      "message": "Health score 79.1 below warning threshold 85"
+    },
+    {
+      "timestamp": 1772703560.4958162,
+      "agent": "AnomalyDetector",
+      "level": "WARNING",
+      "message": "Health score 81.6 below warning threshold 85"
+    },
+    {
+      "timestamp": 1772703659.9076815,
+      "agent": "AttackClassifier",
+      "level": "WARNING",
+      "message": "Health score 83.3 below warning threshold 85"
+    }
+  ]
+}
