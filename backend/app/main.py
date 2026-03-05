@@ -31,11 +31,13 @@ from app.schemas.responses import (
     ClassifyResponse, DeceptionActionResponse, ThreatIntelResponse,
     HealthResponse, SystemStatusResponse, SeverityLevel, DecisionAction,
 )
-from app.models.threat_detector import ThreatDetector, load_threat_models
-from app.models.anomaly_detector import AnomalyDetector, load_anomaly_models
-from app.models.attack_classifier import AttackClassifier, load_classifier_models
-from app.models.deception_agent import DeceptionAgent, load_deception_model
-from app.models.threat_intel import ThreatIntelEngine, load_threat_intel
+from app.models.model_loader import (
+    ThreatDetector, load_threat_models,
+    AnomalyDetector, load_anomaly_models,
+    AttackClassifier, load_classifier_models,
+    DeceptionAgent, load_deception_model,
+    ThreatIntelEngine, load_threat_intel,
+)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # APP INIT
