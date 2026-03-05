@@ -1,0 +1,6 @@
+{
+  "model_name": "all-MiniLM-L6-v2",
+  "embed_dim": 384,
+  "fallback": false,
+  "n_records": 50
+}

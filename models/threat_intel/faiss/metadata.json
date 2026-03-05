@@ -1,0 +1,526 @@
+{
+  "embed_dim": 384,
+  "n_records": 50,
+  "id_to_idx": {
+    "140f3d54a34a": 0,
+    "80423d69201c": 1,
+    "033ef8867d23": 2,
+    "5a117cfd8854": 3,
+    "2308d91323a4": 4,
+    "34a3b379f87f": 5,
+    "5b9cb3247c10": 6,
+    "cba975fb1948": 7,
+    "950b25c6b597": 8,
+    "f6a3e6fbe6f2": 9,
+    "84e23860f105": 10,
+    "45c5070db8ba": 11,
+    "55901a5b44fc": 12,
+    "9de38f12a1ca": 13,
+    "fbac6884cb64": 14,
+    "feb25fd26508": 15,
+    "46e81b2b6b20": 16,
+    "40acff3dd77d": 17,
+    "a0cdb25fac79": 18,
+    "22b2218eec72": 19,
+    "654ed7b4feb6": 20,
+    "988e3c40ad28": 21,
+    "05cb4b03ff86": 22,
+    "e2db96a03bf1": 23,
+    "f109c74e68da": 24,
+    "726892b8342c": 25,
+    "6b01470d20a3": 26,
+    "76353dca5b5b": 27,
+    "0bc21106eda3": 28,
+    "d2b8f37ea414": 29,
+    "4740336a0408": 30,
+    "84598c94eeb8": 31,
+    "6cbdca371df3": 32,
+    "942f844dedfc": 33,
+    "986f6c02adb6": 34,
+    "8a2320f3485c": 35,
+    "555844ef4b69": 36,
+    "dad83616afae": 37,
+    "b76940d2985b": 38,
+    "87427efe6f34": 39,
+    "ab44ca70a8f4": 40,
+    "353248a33fee": 41,
+    "167bcb37970b": 42,
+    "d71729dda96d": 43,
+    "660ece398821": 44,
+    "096b081c649b": 45,
+    "9de7de1672a5": 46,
+    "0d86c4ca85e1": 47,
+    "a1dab58023b2": 48,
+    "66e3d62fafaf": 49
+  },
+  "records": {
+    "140f3d54a34a": {
+      "text": "A volumetric DDoS attack was observed targeting port 80 with SYN flood reaching 50Gbps from botnet infrastructure.",
+      "category": "ddos",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "ddos",
+        "botnet"
+      ]
+    },
+    "80423d69201c": {
+      "text": "DNS amplification attack leveraging open resolvers to generate 100x traffic amplification against victim infrastructure.",
+      "category": "ddos",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "ddos"
+      ]
+    },
+    "033ef8867d23": {
+      "text": "Application-layer DDoS targeting HTTP endpoints with randomized headers to bypass rate limiting defenses.",
+      "category": "ddos",
+      "severity": "medium",
+      "source": "synthetic",
+      "tags": [
+        "ddos"
+      ]
+    },
+    "5a117cfd8854": {
+      "text": "Distributed denial of service attack using NTP amplification with peak volume of 200Gbps sustained for 6 hours.",
+      "category": "ddos",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "ddos"
+      ]
+    },
+    "2308d91323a4": {
+      "text": "Memcached reflection DDoS campaign exploiting UDP port 11211 for amplification factors exceeding 50000x.",
+      "category": "ddos",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "ddos",
+        "exploitation"
+      ]
+    },
+    "34a3b379f87f": {
+      "text": "New ransomware variant discovered encrypting files with AES-256 and demanding Bitcoin payment via Tor hidden service.",
+      "category": "malware",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "malware"
+      ]
+    },
+    "5b9cb3247c10": {
+      "text": "Trojan dropper distributed via phishing emails deploys keylogger and screen capture modules on infected systems.",
+      "category": "malware",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "malware",
+        "phishing",
+        "apt"
+      ]
+    },
+    "cba975fb1948": {
+      "text": "Fileless malware utilizing PowerShell and WMI for persistence avoids traditional antivirus detection mechanisms.",
+      "category": "malware",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "malware"
+      ]
+    },
+    "950b25c6b597": {
+      "text": "Remote access trojan with rootkit capabilities detected establishing encrypted C2 channel to [IP] on port 443.",
+      "category": "malware",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "malware",
+        "botnet"
+      ]
+    },
+    "f6a3e6fbe6f2": {
+      "text": "Polymorphic worm spreading through SMB exploitation targeting unpatched Windows systems in enterprise networks.",
+      "category": "malware",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "malware",
+        "exploitation"
+      ]
+    },
+    "84e23860f105": {
+      "text": "Spear phishing campaign targeting finance department employees with fake invoice attachments containing macro malware.",
+      "category": "phishing",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "malware",
+        "phishing"
+      ]
+    },
+    "45c5070db8ba": {
+      "text": "Credential harvesting phishing site mimicking Office 365 login page hosted on compromised WordPress installation.",
+      "category": "phishing",
+      "severity": "medium",
+      "source": "synthetic",
+      "tags": [
+        "phishing"
+      ]
+    },
+    "55901a5b44fc": {
+      "text": "Business email compromise attack impersonating CEO requesting urgent wire transfer to offshore account.",
+      "category": "phishing",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "unknown"
+      ]
+    },
+    "9de38f12a1ca": {
+      "text": "SMS phishing campaign distributing links to fake banking app designed to steal credentials and intercept MFA codes.",
+      "category": "phishing",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "phishing",
+        "exploitation"
+      ]
+    },
+    "fbac6884cb64": {
+      "text": "Phishing emails with QR codes redirecting to credential harvesting pages to bypass email security gateways.",
+      "category": "phishing",
+      "severity": "medium",
+      "source": "synthetic",
+      "tags": [
+        "phishing"
+      ]
+    },
+    "feb25fd26508": {
+      "text": "Distributed password spray attack targeting Azure AD accounts using rotated IP addresses from cloud infrastructure.",
+      "category": "brute_force",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "brute_force"
+      ]
+    },
+    "46e81b2b6b20": {
+      "text": "SSH brute force attempts from [IP] with 10000 login attempts per hour using common username and password combinations.",
+      "category": "brute_force",
+      "severity": "medium",
+      "source": "synthetic",
+      "tags": [
+        "brute_force",
+        "exploitation"
+      ]
+    },
+    "40acff3dd77d": {
+      "text": "Credential stuffing attack using leaked database of 2 million username password pairs against corporate VPN portal.",
+      "category": "brute_force",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "phishing",
+        "brute_force"
+      ]
+    },
+    "a0cdb25fac79": {
+      "text": "RDP brute force campaign targeting exposed Windows servers with dictionary attack on administrator accounts.",
+      "category": "brute_force",
+      "severity": "medium",
+      "source": "synthetic",
+      "tags": [
+        "brute_force",
+        "exploitation"
+      ]
+    },
+    "22b2218eec72": {
+      "text": "Automated password spraying attack against IMAP email service targeting top 100 most common passwords per account.",
+      "category": "brute_force",
+      "severity": "medium",
+      "source": "synthetic",
+      "tags": [
+        "brute_force"
+      ]
+    },
+    "654ed7b4feb6": {
+      "text": "SQL injection vulnerability discovered in login form allowing authentication bypass and database extraction.",
+      "category": "injection",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "injection",
+        "exploitation"
+      ]
+    },
+    "988e3c40ad28": {
+      "text": "Stored XSS vulnerability in web application comment section enables session hijacking of authenticated users.",
+      "category": "injection",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "injection",
+        "exploitation"
+      ]
+    },
+    "05cb4b03ff86": {
+      "text": "Remote code execution via command injection in web application file upload functionality using OS command chaining.",
+      "category": "injection",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "injection"
+      ]
+    },
+    "e2db96a03bf1": {
+      "text": "LDAP injection attack targeting Active Directory authentication module to enumerate user accounts and group memberships.",
+      "category": "injection",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "unknown"
+      ]
+    },
+    "f109c74e68da": {
+      "text": "Server-side template injection allowing arbitrary code execution on Python Flask application backend server.",
+      "category": "injection",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "unknown"
+      ]
+    },
+    "726892b8342c": {
+      "text": "APT group attributed to nation state conducting long-term surveillance campaign targeting defense sector organizations.",
+      "category": "apt",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "apt"
+      ]
+    },
+    "6b01470d20a3": {
+      "text": "Advanced persistent threat actor maintaining access to compromised network for 18 months using custom implant framework.",
+      "category": "apt",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "apt"
+      ]
+    },
+    "76353dca5b5b": {
+      "text": "State-sponsored group using supply chain compromise to distribute backdoored software update to government agencies.",
+      "category": "apt",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "malware"
+      ]
+    },
+    "0bc21106eda3": {
+      "text": "Targeted attack using spear phishing with zero-day exploit in document processing application for initial access.",
+      "category": "apt",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "phishing",
+        "apt",
+        "exploitation"
+      ]
+    },
+    "d2b8f37ea414": {
+      "text": "APT campaign leveraging compromised VPN appliances as initial access vector into critical infrastructure networks.",
+      "category": "apt",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "apt"
+      ]
+    },
+    "4740336a0408": {
+      "text": "IoT botnet compromising vulnerable CCTV cameras and routers using default credentials for DDoS-for-hire service.",
+      "category": "botnet",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "ddos",
+        "phishing",
+        "botnet"
+      ]
+    },
+    "84598c94eeb8": {
+      "text": "Peer-to-peer botnet architecture with encrypted C2 communication resistant to traditional sinkholing techniques.",
+      "category": "botnet",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "botnet"
+      ]
+    },
+    "6cbdca371df3": {
+      "text": "New botnet variant targeting Linux servers through exploitation of Log4Shell vulnerability for cryptomining operations.",
+      "category": "botnet",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "botnet",
+        "exploitation"
+      ]
+    },
+    "942f844dedfc": {
+      "text": "Command and control infrastructure identified using fast-flux DNS with hundreds of IP addresses rotating every 5 minutes.",
+      "category": "botnet",
+      "severity": "medium",
+      "source": "synthetic",
+      "tags": [
+        "botnet"
+      ]
+    },
+    "986f6c02adb6": {
+      "text": "Botnet establishing persistence through scheduled tasks and registry modifications for long-term command and control access.",
+      "category": "botnet",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "botnet"
+      ]
+    },
+    "8a2320f3485c": {
+      "text": "Attacker performing lateral movement using stolen Kerberos tickets via pass-the-ticket technique across domain controllers.",
+      "category": "lateral_movement",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "lateral_movement"
+      ]
+    },
+    "555844ef4b69": {
+      "text": "Lateral movement detected using PsExec and Windows Management Instrumentation for remote code execution on workstations.",
+      "category": "lateral_movement",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "lateral_movement"
+      ]
+    },
+    "dad83616afae": {
+      "text": "Internal reconnaissance and lateral movement using BloodHound to map Active Directory attack paths to domain admin access.",
+      "category": "lateral_movement",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "lateral_movement"
+      ]
+    },
+    "b76940d2985b": {
+      "text": "Pivot through compromised jump server to access segmented network containing sensitive database and file servers.",
+      "category": "lateral_movement",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "lateral_movement"
+      ]
+    },
+    "87427efe6f34": {
+      "text": "Lateral movement using SSH key chain discovered on compromised Linux web server to access internal application servers.",
+      "category": "lateral_movement",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "lateral_movement"
+      ]
+    },
+    "ab44ca70a8f4": {
+      "text": "Data exfiltration detected via DNS tunneling with encoded payloads in subdomain queries to attacker-controlled nameserver.",
+      "category": "exfiltration",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "exfiltration"
+      ]
+    },
+    "353248a33fee": {
+      "text": "Sensitive data being exfiltrated through HTTPS POST requests to cloud storage service blending with legitimate traffic.",
+      "category": "exfiltration",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "unknown"
+      ]
+    },
+    "167bcb37970b": {
+      "text": "Data breach involving extraction of 500000 customer records through compromised API endpoint with no rate limiting.",
+      "category": "exfiltration",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "exfiltration"
+      ]
+    },
+    "d71729dda96d": {
+      "text": "Covert data exfiltration using steganography to embed stolen information in image files uploaded to social media platform.",
+      "category": "exfiltration",
+      "severity": "high",
+      "source": "synthetic",
+      "tags": [
+        "exfiltration"
+      ]
+    },
+    "660ece398821": {
+      "text": "Database dump exfiltration through ICMP tunnel bypassing network segmentation and firewall egress filtering rules.",
+      "category": "exfiltration",
+      "severity": "critical",
+      "source": "synthetic",
+      "tags": [
+        "exfiltration"
+      ]
+    },
+    "096b081c649b": {
+      "text": "Network scanning activity detected from external IP targeting common service ports 22 80 443 3389 8080 across entire subnet.",
+      "category": "reconnaissance",
+      "severity": "low",
+      "source": "synthetic",
+      "tags": [
+        "unknown"
+      ]
+    },
+    "9de7de1672a5": {
+      "text": "Web application vulnerability scanning using automated tools Nikto and OWASP ZAP against public-facing web servers.",
+      "category": "reconnaissance",
+      "severity": "medium",
+      "source": "synthetic",
+      "tags": [
+        "exploitation"
+      ]
+    },
+    "0d86c4ca85e1": {
+      "text": "DNS enumeration and zone transfer attempts targeting corporate domain to discover internal hostnames and IP addresses.",
+      "category": "reconnaissance",
+      "severity": "medium",
+      "source": "synthetic",
+      "tags": [
+        "unknown"
+      ]
+    },
+    "a1dab58023b2": {
+      "text": "Social media OSINT reconnaissance campaign gathering employee information for targeted phishing attack preparation.",
+      "category": "reconnaissance",
+      "severity": "low",
+      "source": "synthetic",
+      "tags": [
+        "phishing"
+      ]
+    },
+    "66e3d62fafaf": {
+      "text": "Port scanning followed by service version fingerprinting indicating pre-attack reconnaissance of critical infrastructure.",
+      "category": "reconnaissance",
+      "severity": "medium",
+      "source": "synthetic",
+      "tags": [
+        "unknown"
+      ]
+    }
+  }
+}

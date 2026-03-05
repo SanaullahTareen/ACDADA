@@ -1,0 +1,20 @@
+{
+  "Random": {
+    "mean_reward": -11.3302,
+    "std_reward": 17.184371183141966,
+    "mean_hp_interactions": 1.755,
+    "mean_real_compromises": 6.385
+  },
+  "AlwaysMonitor": {
+    "mean_reward": -7.839699999999999,
+    "std_reward": 12.28401684751368,
+    "mean_hp_interactions": 0.0,
+    "mean_real_compromises": 4.445
+  },
+  "Heuristic": {
+    "mean_reward": -33.137699999999995,
+    "std_reward": 20.563604856882463,
+    "mean_hp_interactions": 0.0,
+    "mean_real_compromises": 13.035
+  }
+}

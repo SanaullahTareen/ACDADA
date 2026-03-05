@@ -1,0 +1,19 @@
+{
+  "n_real_hosts": 8,
+  "n_honeypots": 4,
+  "max_steps": 100,
+  "attacker_skill": 0.5,
+  "obs_size": 95,
+  "n_actions": 9,
+  "action_names": [
+    "observe",
+    "activate_hp_0",
+    "activate_hp_1",
+    "activate_hp_2",
+    "activate_hp_3",
+    "deactivate_all",
+    "redirect_to_hp",
+    "increase_monitoring",
+    "block_attacker"
+  ]
+}
