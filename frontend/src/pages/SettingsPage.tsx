@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Save, RotateCcw, Server, Sliders, Bell, Palette } from 'lucide-react';
+import { Save, RotateCcw, Server, Sliders, Bell, Palette, FlaskConical } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { Card } from '../components/common';
 
@@ -14,6 +14,7 @@ interface Settings {
     darkMode: boolean;
     notifications: boolean;
     soundAlerts: boolean;
+    demoMode: boolean;
 }
 
 const DEFAULT_SETTINGS: Settings = {
@@ -27,6 +28,7 @@ const DEFAULT_SETTINGS: Settings = {
     darkMode: true,
     notifications: true,
     soundAlerts: false,
+    demoMode: false,
 };
 
 export function SettingsPage() {
@@ -232,6 +234,28 @@ export function SettingsPage() {
                             <div className="w-11 h-6 bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-blue-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600" />
                         </label>
                     </div>
+                </div>
+            </Card>
+
+            {/* Demo Mode */}
+            <Card title="Simulation Mode" icon={<FlaskConical className="w-5 h-5" />}>
+                <div className="flex items-center justify-between">
+                    <div>
+                        <h4 className="font-medium text-slate-200">Demo Mode</h4>
+                        <p className="text-sm text-slate-500">Generate fake data without backend (for testing/demos)</p>
+                        {settings.demoMode && (
+                            <p className="text-xs text-purple-400 mt-1">🎭 Demo mode is active — data is simulated locally</p>
+                        )}
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                        <input
+                            type="checkbox"
+                            checked={settings.demoMode}
+                            onChange={(e) => handleChange('demoMode', e.target.checked)}
+                            className="sr-only peer"
+                        />
+                        <div className="w-11 h-6 bg-slate-700 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-purple-500 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600" />
+                    </label>
                 </div>
             </Card>
 

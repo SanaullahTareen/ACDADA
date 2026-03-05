@@ -333,8 +333,30 @@ async def websocket_events(websocket: WebSocket):
 
 # ─── EVENT LOG ENDPOINT ──────────────────────────────────────────────────────
 @app.get("/events", tags=["system"])
-async def get_events(limit: int = Query(100, ge=1, le=1000)):
-    return list(EVENT_LOG)[-limit:]
+async def get_events(
+    limit: int = Query(100, ge=1, le=1000),
+    skip: int = Query(0, ge=0),
+):
+    all_events = list(EVENT_LOG)
+    total = len(all_events)
+    # Convert to proper format for frontend
+    events = []
+    for e in all_events[skip:skip + limit]:
+        events.append({
+            "event_id": e.get("flow_id", str(uuid.uuid4())[:12]),
+            "timestamp": e.get("timestamp", datetime.now(timezone.utc).isoformat()),
+            "is_threat": e.get("is_threat", False),
+            "severity": e.get("severity", "low"),
+            "attack_type": e.get("attack_type"),
+            "confidence": e.get("threat_confidence", 0.0) if e.get("is_threat") else 0.0,
+            "decision": e.get("decision", "allow"),
+        })
+    return {
+        "events": events,
+        "total": total,
+        "skip": skip,
+        "limit": limit,
+    }
 
 # ─── METRICS ─────────────────────────────────────────────────────────────────
 @app.get("/metrics", tags=["system"])

@@ -8,6 +8,7 @@ interface Settings {
     simulationRate: number;
     threatThreshold: number;
     anomalyThreshold: number;
+    demoMode: boolean;
 }
 
 interface AppContextValue {
@@ -39,6 +40,7 @@ const defaultSettings: Settings = {
     simulationRate: 1,
     threatThreshold: 0.5,
     anomalyThreshold: 0.5,
+    demoMode: false,
 };
 
 const AppContext = createContext<AppContextValue | null>(null);

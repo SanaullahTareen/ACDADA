@@ -21,7 +21,7 @@ export default function App() {
                     <Route path="/" element={<MainLayout />}>
                         <Route index element={<Navigate to="/dashboard" replace />} />
                         <Route path="dashboard" element={<DashboardPage />} />
-                        <Route path="simulation" element={<LiveSimulationPage />} />
+                        <Route path="live" element={<LiveSimulationPage />} />
                         <Route path="detection" element={<DetectionPage />} />
                         <Route path="classification" element={<ClassificationPage />} />
                         <Route path="deception" element={<DeceptionPage />} />
