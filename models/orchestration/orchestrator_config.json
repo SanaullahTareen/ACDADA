@@ -1,0 +1,29 @@
+{
+  "agents": [
+    "threat_detector",
+    "anomaly_detector",
+    "attack_classifier",
+    "deception_agent",
+    "threat_intel"
+  ],
+  "pipeline_nodes": [
+    "detect",
+    "classify",
+    "enrich",
+    "decide",
+    "act",
+    "pass_through"
+  ],
+  "decision_weights": {
+    "threat": 0.4,
+    "anomaly": 0.3,
+    "classification": 0.3
+  },
+  "severity_thresholds": {
+    "critical": 0.8,
+    "high": 0.6,
+    "medium": 0.3
+  },
+  "n_events_processed": 500,
+  "n_messages": 924
+}
