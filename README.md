@@ -258,8 +258,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👤 Author
 
 **Abdullah Tareen**
-- Email: tareenabdullah989@gmail.com
-- GitHub: [@abdullah-tareen](https://github.com/abdullah-tareen)
+- Email: sanaullahtareen.info@gmail.com
+- GitHub: Sanaullah Tareen(https://github.com/SanaullahTareen)
 
 ## 🙏 Acknowledgments
 
